@@ -7,11 +7,12 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: Notes Home
       - about.qmd
       - tech.qmd
       - builds.qmd
       - icon: globe
+        text: Main Site
         href: https://livingphysics.org
 
 format:

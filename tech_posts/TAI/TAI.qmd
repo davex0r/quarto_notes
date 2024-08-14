@@ -1,11 +1,6 @@
 ---
 title: "TAI Note"
-format:
-  html:
-    theme:
-        dark: darkly
-        light: flatly
-    code-fold: true
+code-fold: true
 jupyter: julia-1.10
 author: "David Jordan"
 date: "2024-07-16"

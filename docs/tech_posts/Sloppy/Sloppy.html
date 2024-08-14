@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="David Jordan">
+<meta name="dcterms.date" content="2024-05-13">
 
-<title>Notebooks - Technical Notes</title>
+<title>Notebooks - An interesting connection between sloppy model analysis and projection operators</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,7 +99,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +109,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Notebooks</span>
     </a>
   </div>
@@ -149,19 +120,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Notes Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./tech.html" aria-current="page"> 
+    <a class="nav-link" href="../../tech.html"> 
 <span class="menu-text">Technical Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./builds.html"> 
+    <a class="nav-link" href="../../builds.html"> 
 <span class="menu-text">Build Notes</span></a>
   </li>  
   <li class="nav-item">
@@ -179,113 +150,99 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Technical Notes</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">An interesting connection between sloppy model analysis and projection operators</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Sloppy Models</div>
+                <div class="quarto-category">Projection Operators</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Jordan </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 13, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Projection Operators">Projection Operators <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Sloppy Models">Sloppy Models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TAI">TAI <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>This note concerns various ways I have been thinking about basis functions with connections between some other fields I have been interested in, namely, projection operators, Koopman and Transfer operators, coordinate transformations, “sloppy model analysis”, Hilbert spaces and Reproducing Kernel Hilbert spaces, and function approximation.</p>
+<p>Function approximation is a useful tool, it is no coincidence that artificial neural networks of the multilayer feedforward variety <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> are provably universal function approximators. Projection in a Hilbert space of functions is one method of function approximation. A familiar example of a Hilbert space projection methods is Fourier analysis, where an arbitrary function is represented by its projection onto a basis set of functions, in this case sinusoids. Function projection relies on having an inner product on the function space, and in this case we will use the <span class="math inline">\(L^2\)</span> inner product defined as, <span class="math display">\[ \langle f(t),g(t)\rangle = \int_a^b(f(t) \cdot g(t)) dt\]</span> With an increasing number of terms in the Fourier series, we can approximate a given function to arbitrary accuracy. Truncating the series is a form of projection, where we are projecting the infinite dimensional vector that represents the function onto the subspace spanned by only a finite subspace, for example onto the lower frequency modes. The projection need not be a frequency cutoff, one could choose arbitrarily some subspace on which to project the function, for example, a custom compression for that function might choose the <em>n</em> modes with the highest power. This is an example of what I call “Concentration of Dimension”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and may provide a basis for understanding the emergence of low-dimensionality in biological systems and in particular how these systems are capable of both [[Canalization and Plasticity]].</p>
+<p>In general we can represent an arbitrary function in any basis by projecting it onto the span of the subspace of those basis functions. It is easiest if those functions comprise an orthonormal basis, as they do in the Fourier series example, but this is not necessary, in fact we don’t even have to orthogonalize the basis first if we can compute and invert the Gram Matrix (the matrix of inner products between the basis functions). This is the basic idea behind regularization in function approximation and techniques such as kernel regression. <em>This should sound eerily familiar re: Orthogonality!</em></p>
+<p>At this point I would like to present a simple example which will also highlight the connection to sloppy model analysis. Taylor series approximation is a well known example of function approximation in a polynomial basis, usually motivated as a local equivalence between the n derivatives of the function and those of the polynomial approximation. However we can also view polynomial approximation as a projection onto polynomial basis functions. For example, the second order Taylor approximation of a function <span class="math inline">\(f(x)\)</span> can be viewed as the projection of the function <span class="math inline">\(f(x)\)</span> onto the subspace spanned by <span class="math inline">\(1\)</span>, <span class="math inline">\(x\)</span>, and <span class="math inline">\(x^2\)</span>. In a procedure similar to what we did wth orthogonality, we can first compute the projection onto the basis functions even though the basis functions are not orthonormal. For this example lets use <span class="math inline">\(f(x) = sin(x)\)</span> and the interval <span class="math inline">\([a,b] = [0,1]\)</span> to match the conditions in Sethna’s work (e.g.&nbsp;https://sethna.lassp.cornell.edu/Sloppy/FittingPolynomials.html). As a reminder, we are going to use function space projection to find the coefficients <span class="math inline">\(w_i\)</span> in the nth order polynomial approximation <span class="math inline">\(\sum_{i=0}^n(w_it^i)\)</span> . For the polynomial approximation, this can be written as minimization problem <span class="math inline">\(min_{w\in R^n}\left\lVert f-\sum_{i=0}^nw_it^i) \right\rVert\)</span> noting that <span class="math inline">\(\left\lVert f-\sum_{i=0}^nw_it^i) \right\rVert^2 = \langle f-\sum_{i=0}^nw_it^i,f-\sum_{i=0}^nw_it^i \rangle\)</span>, and using the inner product defined above, we can derive the [[Projection in terms of the Gram Matrix ]] with the projection is given by <span class="math display">\[ w^* = G^{-1} \left [ \begin{matrix} \langle f,b_0\rangle \\  \langle f,b_1\rangle \\ \langle f,b_2\rangle \\ ... \\ \langle f,b_n\rangle \\ \end{matrix} \right]\]</span> with the Gram matrix given as the <span class="math inline">\(nxn\)</span> matrix of inner products between the basis functions. If the basis functions form an orthonormal basis, then the Gram matrix is equal to the identity matrix, and it is equal to its own inverse. However, this need to be true and in general the Gram matrix is given as <span class="math display">\[G =  \left [ \begin{matrix} \langle b_0,b_0\rangle &amp; \langle b_1,b_0\rangle &amp; ... &amp; \langle b_n,b_0\rangle \\  \langle b_0,b_1\rangle &amp; \langle b_1,b_1\rangle &amp; ... &amp; \langle b_n,b_1\rangle  \\ ... &amp; ... &amp; ... &amp; ...  \\ \langle b_0,b_n\rangle &amp; \langle b_1,b_n\rangle &amp; ... &amp; \langle b_n,b_n\rangle  \\ \end{matrix} \right]\]</span></p>
+<p>With our definition of the inner product and the monomial basis functions, we can compute this gram Matrix explicitly for polynomial projection.</p>
+<p>$$<span class="math display">\[\begin{align} \langle b_0,b_0\rangle &amp;= \int_0^1(1\cdot 1)dt = x|_0^1 = 1 \\ \langle b_0,b_1\rangle = \langle b_1,b_0\rangle &amp;= \int_0^1(1\cdot x)dt = \frac{x^2}{2}|_0^1 = \frac{1}{2} \\ \langle b_1,b_1\rangle &amp;= \int_0^1(x\cdot x)dt = \frac{x^3}{3}|_0^1 = \frac{1}{3} \\ \langle b_0,b_2\rangle = \langle b_2,b_0\rangle &amp;= \int_0^1(1\cdot x^2)dt = \frac{x^3}{3}|_0^1 = \frac{1}{3} \\
+
+\langle b_1,b_2\rangle = \langle b_2,b_1\rangle &amp;= \int_0^1(x\cdot x^2)dt = \frac{x^4}{4}|_0^1 = \frac{1}{4} \\
+
+\langle b_2,b_2\rangle &amp;= \int_0^1(x^2\cdot x^2)dt = \frac{x^5}{5}|_0^1 = \frac{1}{5} \\
+\end{align}\]</span><span class="math display">\[
+So in this case, the final weights are given by
+\]</span> <span class="math display">\[\begin{align}
+w^* &amp;= G^{-1} \left [ \begin{matrix} \langle sin(x),1\rangle \\  \langle sin(x),x\rangle \\ \langle sin(x),x^2\rangle \\ \end{matrix} \right] \\
+&amp;= \left [ \begin{matrix} 1 &amp; 1/2 &amp; 1/3 \\ 1/2 &amp; 1/3 &amp; 1/4 \\ 1/3 &amp; 1/4 &amp; 1/5 \end{matrix} \right ]^{-1}*\left [ \begin{matrix} 0.4597 \\ 0.3012 \\ 0.2232 \end{matrix} \right ]
+\end{align}\]</span> $$ Which gives the following results:</p>
+<p>Now let us look at the the general Gram matrix in this case, we obtain the Hilbert matrix. The fact that this matrix is ill conditioned means that the inverse greatly magnifies small differences in the input. <span class="math display">\[G = H_{ij}=\frac{1}{(i+j+1)} = \left [ \begin{matrix} 1 &amp; \frac{1}{2} &amp; \frac{1}{3} &amp; ... \\  \frac{1}{2} &amp; \frac{1}{3} &amp; ...&amp; ... \\ \frac{1}{3} &amp; ... &amp; ... &amp; ... \\ ... &amp; ... &amp; ... &amp; ...  \end{matrix} \right]\]</span> I was struck when this matrix appeared because I had seen it before in the Sloppy model literature<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> but derived in a very different context. In sloppy model analysis, we are interested in the looking at the parameter sensitivity of a continuous least squares regression. This sensitivity is captured by the Hessian of the fit function with respect to the parameters at the best fit point, so in this case, we are looking at the matrix given by</p>
+<p><span class="math display">\[ \frac{\partial^2}{\partial w_i \partial w_j}\left (\frac{1}{2}\int_0^1\sum_n(w_it^i-w_i^*t^i)^2 dt \right )\]</span></p>
+<p>Surprising to me, this gives the exact same matrix as the Gram matrix for the projection operator.</p>
+<p>$$ <span class="math display">\[\begin{align}
+
+H_{n,m} &amp;= \frac{\partial^2}{\partial w_n \partial w_m}\left (\frac{1}{2}\int_0^1\sum_n(w_it^i-w_i^*t^i)^2 dt\right ) \\
+
+&amp;= \frac{1}{2}\int_0^1 \frac{\partial^2}{\partial w_n \partial w_m} \sum_n(w_it^i-w_i^*t^i)^2 dt \\
+
+&amp;= \frac{1}{2}\int_0^1 \frac{\partial^2}{\partial w_n \partial w_m} \left ( \sum_n(w_it^i)^2-2\sum_n(w_it^i*w_i^*t^i)+\sum_n(w_i^*t^i)^2 \right )dt \\
+
+&amp;= \frac{1}{2}\int_0^1 \frac{\partial}{\partial w_n} \left ( 2\sum_n(w_it^i)*t^m-2(t^m*w_m^*t^m) \right )dt \\
+
+&amp;= \frac{1}{2}\int_0^1 \left ( 2t^n*t^m \right )dt \\
+
+&amp;= \int_0^1 t^{(n+m)} dt \\
+
+&amp;= \frac{1}{n+m+1}t^{n+m+1}\Big|_0^1 \\
+&amp;= \frac{1}{n+m+1}
+\end{align}\]</span> $$ This leads me to believe that I am on the right track thinking about my worm developmental biology project, my worm behavior project, and our non equilibrium stuff in terms of projection operator theory ( a convergence which emerged very unexpectedly at three different scales of inquiry)</p>
+<p>The next note will probably be [[Introduction and Motivations for a Projection Operator Approach]] followed by [[Observable functions and their dynamics]] followed by [[Coordinate transformations rotations]] which will connect this to the relationship between our orthogonally measure, matrix condition, and how cells may use steady states to measure their own intracellular fluxes.</p>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TAI" data-listing-date-sort="1721084400000" data-listing-file-modified-sort="1723649742105" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
-<div class="thumbnail">
-<p><a href="./tech_posts/TAI/TAI.html" class="no-external"></a></p><a href="./tech_posts/TAI/TAI.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/TAI/TAI.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">TAI Note</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/TAI/TAI.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TAI'); return false;">
-TAI
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">Let’s begin with the definition of the <span class="math inline">\(TAI\)</span> at stage <span class="math inline">\(s\)</span>: <span class="math display">\[TAI(s) = \sum_i^N p_i \frac{e_i(s)}{\sum_i^Ne_i(s)}\]</span> where, <span class="math inline">\(e_i(s)\)</span> is the expression of gene <span class="math inline">\(i\)</span> in…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">
-<div class="listing-date">
-Jul 16, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Sloppy Models,Projection Operators" data-listing-date-sort="1715554800000" data-listing-file-modified-sort="1723649873433" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1321">
-<div class="thumbnail">
-<p><a href="./tech_posts/Sloppy/Sloppy.html" class="no-external"></a></p><a href="./tech_posts/Sloppy/Sloppy.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/Sloppy/Sloppy.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/Sloppy/Sloppy.html" class="no-external">An interesting connection between sloppy model analysis and projection operators</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/Sloppy/Sloppy.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Sloppy Models'); return false;">
-Sloppy Models
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Projection Operators'); return false;">
-Projection Operators
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/Sloppy/Sloppy.html" class="no-external">This note concerns various ways I have been thinking about basis functions with connections between some other fields I have been interested in, namely, projection…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/Sloppy/Sloppy.html" class="no-external">
-<div class="listing-date">
-May 13, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Hartman EJ, Keeler JD &amp; Kowalski JM (1990) Layered neural networks with Gaussian hidden units as universal approximations.&nbsp;<em>Neural Comput</em>&nbsp;2: 210–215<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Hornik K, Stinchcombe M &amp; White H (1989) Multilayer feedforward networks are universal approximators.&nbsp;<em>Neural Netw</em>&nbsp;2: 359–366<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Jordan DJ &amp; Miska EA (2023) Canalisation and plasticity on the developmental manifold of Caenorhabditis elegans.&nbsp;<em>Mol Syst Biol</em>: e11835<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Waterfall JJ, Casey FP, Gutenkunst RN, Brown KS, Myers CR, Brouwer PW, Elser V &amp; Sethna JP (2006) Sloppy-model universality class and the Vandermonde matrix.&nbsp;<em>Phys Rev Lett</em>&nbsp;97: 150601<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

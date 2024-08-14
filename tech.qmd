@@ -1,7 +1,7 @@
 ---
-title: "Notes"
+title: "Technical Notes"
 listing:
-  contents: posts
+  contents: tech_posts
   sort: "date desc"
   type: default
   categories: true

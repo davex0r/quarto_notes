@@ -9,7 +9,8 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - blog.qmd
+      - tech.qmd
+      - build.qmd
 
 format:
   html:

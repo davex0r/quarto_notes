@@ -4,13 +4,3 @@
       font-size: 0.6em;
     }
   }
-@media (max-width: 767px) {
-.quarto-figure {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-.quarto-figure img {
-    max-width: 100%;
-    height: auto;
-}
-}

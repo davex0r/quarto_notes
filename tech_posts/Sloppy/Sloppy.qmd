@@ -83,7 +83,7 @@ $$ \frac{\partial^2}{\partial w_i \partial w_j}\left (\frac{1}{2}\int_0^1\sum_n(
 
 Surprising to me, this gives the exact same matrix as the Gram matrix for the projection operator. 
 
-$$\\begin{align}H_{n,m} &= \frac{\partial^2}{\partial w_n \partial w_m}\left (\frac{1}{2}\int_0^1\sum_n(w_it^i-w_i^*t^i)^2 dt\right ) \\
+$$\begin{align}H_{n,m} &= \frac{\partial^2}{\partial w_n \partial w_m}\left (\frac{1}{2}\int_0^1\sum_n(w_it^i-w_i^*t^i)^2 dt\right ) \\
 &= \frac{1}{2}\int_0^1 \frac{\partial^2}{\partial w_n \partial w_m} \sum_n(w_it^i-w_i^*t^i)^2 dt \\
 &= \frac{1}{2}\int_0^1 \frac{\partial^2}{\partial w_n \partial w_m} \left ( \sum_n(w_it^i)^2-2\sum_n(w_it^i*w_i^*t^i)+\sum_n(w_i^*t^i)^2 \right )dt \\
 &= \frac{1}{2}\int_0^1 \frac{\partial}{\partial w_n} \left ( 2\sum_n(w_it^i)*t^m-2(t^m*w_m^*t^m) \right )dt \\

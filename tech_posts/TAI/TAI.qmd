@@ -6,6 +6,7 @@ author: "David Jordan"
 date: "2024-07-16"
 categories: [TAI]
 ---
+This note concerns the use of data transformations in calculations of the **Transcriptome Age Index** or TAI.  Here I argue that the TAI, when calculated as an expression weighted sum of phylostratigraphic indices is a vector projection and thus the length of the relative expression vector should be normalized to account for the fact that expression vectors are shorter when more genes are expressed.  Mathematically, the square root transform achieves this normalization because of a property of histograms (transforming an n-simplex into an n-sphere).
 
 ## The Square Root Transform
 

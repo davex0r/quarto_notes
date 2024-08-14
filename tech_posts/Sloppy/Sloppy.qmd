@@ -76,14 +76,14 @@ display(p)
 ```
 
  Now let us look at the the general Gram matrix in this case, we obtain the Hilbert matrix.  The fact that this matrix is ill conditioned means that the inverse greatly magnifies small differences in the input. 
- $$G = H_{ij}=\frac{1}{(i+j+1)} = \left [ \begin{matrix} 1 & \frac{1}{2} & \frac{1}{3} & ... \\  \frac{1}{2} & \frac{1}{3} & ...& ... \\ \frac{1}{3} & ... & ... & ... \\ ... & ... & ... & ...  \end{matrix} \right]$$
+ $$\begin{align}G &= H_{ij}=\frac{1}{(i+j+1)} \\ &= \left [ \begin{matrix} 1 & \frac{1}{2} & \frac{1}{3} & ... \\  \frac{1}{2} & \frac{1}{3} & ...& ... \\ \frac{1}{3} & ... & ... & ... \\ ... & ... & ... & ...  \end{matrix} \right]\end{align}$$
 I was struck when this matrix appeared because I had seen it before in the Sloppy model literature[^4] but derived in a very different context.  In sloppy model analysis, we are interested in the looking at the parameter sensitivity of a continuous least squares regression.  This sensitivity is captured by the  Hessian of the fit function with respect to the parameters at the best fit point, so in this case, we are looking at the matrix given by 
 
 $$ \frac{\partial^2}{\partial w_i \partial w_j}\left (\frac{1}{2}\int_0^1\sum_n(w_it^i-w_i^*t^i)^2 dt \right )$$
 
 Surprising to me, this gives the exact same matrix as the Gram matrix for the projection operator. 
 
-$$\begin{align}\small H_{n,m} &= \frac{\partial^2}{\partial w_n \partial w_m}\left (\frac{1}{2}\int_0^1\sum_n(w_it^i-w_i^*t^i)^2 dt\right ) \\
+$$\begin{align}\tiny H_{n,m} &= \frac{\partial^2}{\partial w_n \partial w_m}\left (\frac{1}{2}\int_0^1\sum_n(w_it^i-w_i^*t^i)^2 dt\right ) \\
 &= \frac{1}{2}\int_0^1 \frac{\partial^2}{\partial w_n \partial w_m} \sum_n(w_it^i-w_i^*t^i)^2 dt \\
 &= \frac{1}{2}\int_0^1 \frac{\partial^2}{\partial w_n \partial w_m} \left ( \sum_n(w_it^i)^2-2\sum_n(w_it^i*w_i^*t^i)+\sum_n(w_i^*t^i)^2 \right )dt \\
 &= \frac{1}{2}\int_0^1 \frac{\partial}{\partial w_n} \left ( 2\sum_n(w_it^i)*t^m-2(t^m*w_m^*t^m) \right )dt \\

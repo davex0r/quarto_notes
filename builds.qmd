@@ -1,7 +1,7 @@
 ---
 title: "Build Notes"
 listing:
-  contents: build_posts
+  contents: builds_posts
   sort: "date desc"
   type: default
   categories: true

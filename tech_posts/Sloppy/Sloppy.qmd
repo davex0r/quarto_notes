@@ -15,27 +15,27 @@ With an increasing number of terms in the Fourier series, we can approximate a g
 
 In general we can represent an arbitrary function in any basis by projecting it onto the span of the subspace of those basis functions.  It is easiest if those functions comprise an orthonormal basis, as they do in the Fourier series example, but this is not necessary, in fact we don't even have to orthogonalize the basis first if we can compute and invert the Gram Matrix (the matrix of inner products between the basis functions).  This is the basic idea behind regularization in function approximation and techniques such as kernel regression.  *This should sound eerily familiar re: Orthogonality!*
 
-At this point I would like to present a simple example which will also highlight the connection to sloppy model analysis.  Taylor series approximation is a well known example of function approximation in a polynomial basis, usually motivated as a local equivalence between the n derivatives of the function and those of the polynomial approximation.  However we can also view polynomial approximation as a projection onto polynomial basis functions.  For example, the second order Taylor approximation of a function $f(x)$ can be viewed as the projection of the function $f(x)$ onto the subspace spanned by $1$, $x$, and $x^2$.  In a procedure similar to what we did wth orthogonality, we can first compute the projection onto the basis functions even though the basis functions are not orthonormal. For this example lets use $f(x) = sin(x)$ and the interval $[a,b] = [0,1]$ to match the conditions in [Sethna's work](https://sethna.lassp.cornell.edu/Sloppy/FittingPolynomials.html).  As a reminder, we are going to use function space projection to find the coefficients $w_i$ in the nth order polynomial approximation $\sum_{i=0}^n(w_it^i)$ .  For the polynomial approximation, this can be written as minimization problem $min_{w\in R^n}\left\lVert f-\sum_{i=0}^n(w_it^i) \right\rVert$ noting that 
-$$\small \left\lVert f-\sum_{i=0}^n(w_it^i) \right\rVert^2 = \langle f-\sum_{i=0}^nw_it^i,f-\sum_{i=0}^nw_it^i \rangle$$ 
+At this point I would like to present a simple example which will also highlight the connection to sloppy model analysis.  Taylor series approximation is a well known example of function approximation in a polynomial basis, usually motivated as a local equivalence between the n derivatives of the function and those of the polynomial approximation.  However we can also view polynomial approximation as a projection onto polynomial basis functions.  For example, the second order Taylor approximation of a function $f(x)$ can be viewed as the projection of the function $f(x)$ onto the subspace spanned by $1$, $x$, and $x^2$.  In a procedure similar to what we did wth orthogonality, we can first compute the projection onto the basis functions even though the basis functions are not orthonormal. For this example lets use $f(x) = sin(x)$ and the interval $[a,b] = [0,1]$ to match the conditions in [Sethna's work](https://sethna.lassp.cornell.edu/Sloppy/FittingPolynomials.html).  As a reminder, we are going to use function space projection to find the coefficients $w_i$ in the nth order polynomial approximation $\sum_{i=0}^n(w_it^i)$ .  For the polynomial approximation, this can be written as minimization problem 
+$$min_{w\in R^n}\left\lVert f-\sum_{i=0}^n(w_it^i) \right\rVert$$
+ noting that 
+$$ \left\lVert f-\sum_{i=0}^n(w_it^i) \right\rVert^2 = \langle f-\sum_{i=0}^nw_it^i,f-\sum_{i=0}^nw_it^i \rangle$$ 
 
 and using the inner product defined above, we can derive the [[Projection in terms of the Gram Matrix ]] with the projection is given by
  $$\begin{align}w^* &= G^{-1} \left [ \begin{matrix} \langle f,b_0\rangle \\  \langle f,b_1\rangle \\ \langle f,b_2\rangle \\ ... \\ \langle f,b_n\rangle \\ \end{matrix} \right]\end{align}$$
 
 with the Gram matrix given as the $nxn$ matrix of inner products between the basis functions.  If the basis functions form an orthonormal basis, then the Gram matrix is equal to the identity matrix, and it is equal to its own inverse. However, this need to be true and in general the Gram matrix is given as
- $$\scriptsize G =  \left [ \begin{matrix} \langle b_0,b_0\rangle & \langle b_1,b_0\rangle & ... & \langle b_n,b_0\rangle \\  \langle b_0,b_1\rangle & \langle b_1,b_1\rangle & ... & \langle b_n,b_1\rangle  \\ ... & ... & ... & ...  \\ \langle b_0,b_n\rangle & \langle b_1,b_n\rangle & ... & \langle b_n,b_n\rangle  \\ \end{matrix} \right]$$
+ $$ G =  \left [ \begin{matrix} \langle b_0,b_0\rangle & \langle b_1,b_0\rangle & ... & \langle b_n,b_0\rangle \\  \langle b_0,b_1\rangle & \langle b_1,b_1\rangle & ... & \langle b_n,b_1\rangle  \\ ... & ... & ... & ...  \\ \langle b_0,b_n\rangle & \langle b_1,b_n\rangle & ... & \langle b_n,b_n\rangle  \\ \end{matrix} \right]$$
 
 With our definition of the inner product and the monomial basis functions, we can compute this gram Matrix explicitly for polynomial projection.
 
-$$\scriptsize
-\begin{align} \langle b_0,b_0\rangle &= \int_0^1(1\cdot 1)dt = x|_0^1 = 1 \\ \langle b_0,b_1\rangle = \langle b_1,b_0\rangle &= \int_0^1(1\cdot x)dt = \frac{x^2}{2}|_0^1 = \frac{1}{2} \\ \langle b_1,b_1\rangle &= \int_0^1(x\cdot x)dt = \frac{x^3}{3}|_0^1 = \frac{1}{3} \\ \langle b_0,b_2\rangle = \langle b_2,b_0\rangle &= \int_0^1(1\cdot x^2)dt = \frac{x^3}{3}|_0^1 = \frac{1}{3} \\ 
+$$\begin{align} \langle b_0,b_0\rangle &= \int_0^1(1\cdot 1)dt = x|_0^1 = 1 \\ \langle b_0,b_1\rangle = \langle b_1,b_0\rangle &= \int_0^1(1\cdot x)dt = \frac{x^2}{2}|_0^1 = \frac{1}{2} \\ \langle b_1,b_1\rangle &= \int_0^1(x\cdot x)dt = \frac{x^3}{3}|_0^1 = \frac{1}{3} \\ \langle b_0,b_2\rangle = \langle b_2,b_0\rangle &= \int_0^1(1\cdot x^2)dt = \frac{x^3}{3}|_0^1 = \frac{1}{3} \\ 
 \langle b_1,b_2\rangle = \langle b_2,b_1\rangle &= \int_0^1(x\cdot x^2)dt = \frac{x^4}{4}|_0^1 = \frac{1}{4} \\ 
 \langle b_2,b_2\rangle &= \int_0^1(x^2\cdot x^2)dt = \frac{x^5}{5}|_0^1 = \frac{1}{5} \\
 \end{align}$$
 
 So in this case, the final weights are given by 
 
-$$\scriptsize 
-\begin{align}
+$$ \begin{align}
 w^* &= G^{-1} \left [ \begin{matrix} \langle sin(x),1\rangle \\  \langle sin(x),x\rangle \\ \langle sin(x),x^2\rangle \\ \end{matrix} \right] \\
 &= \left [ \begin{matrix} 1 & 1/2 & 1/3 \\ 1/2 & 1/3 & 1/4 \\ 1/3 & 1/4 & 1/5 \end{matrix} \right ]^{-1}*\left [ \begin{matrix} 0.4597 \\ 0.3012 \\ 0.2232 \end{matrix} \right ]
 \end{align}$$

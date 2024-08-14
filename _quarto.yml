@@ -11,6 +11,8 @@ website:
       - about.qmd
       - tech.qmd
       - builds.qmd
+      - icon: globe
+        href: https://livingphysics.org
 
 format:
   html:

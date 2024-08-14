@@ -4,7 +4,7 @@
     "href": "builds.html",
     "title": "Build Notes",
     "section": "",
-    "text": "Welcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nAug 11, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome To Builds\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nAug 14, 2024\n\n\nDavid Jordan\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -16,9 +16,9 @@
   {
     "objectID": "builds_posts/welcome/index.html",
     "href": "builds_posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "title": "Welcome To Builds",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "This is the first build post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
     "objectID": "tech_posts/TAI/TAI.html",
@@ -46,6 +46,6 @@
     "href": "tech.html",
     "title": "Technical Notes",
     "section": "",
-    "text": "TAI Note\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "TAI Note\n\n\n\n\n\n\nTAI\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\nDavid Jordan\n\n\n\n\n\n\nNo matching items"
   }
 ]

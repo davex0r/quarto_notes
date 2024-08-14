@@ -7,6 +7,9 @@ format:
         light: flatly
     code-fold: true
 jupyter: julia-1.10
+author: "David Jordan"
+date: "2024-07-16"
+categories: [TAI]
 ---
 
 ## The Square Root Transform

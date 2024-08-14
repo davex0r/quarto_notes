@@ -1,11 +1,11 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
-date: "2024-08-11"
+title: "Welcome To Builds"
+author: "David Jordan"
+date: "2024-08-14"
 categories: [news]
 ---
 
-This is the first post in a Quarto blog. Welcome!
+This is the first build post in a Quarto blog. Welcome!
 
 ![](thumbnail.jpg)
 

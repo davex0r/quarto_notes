@@ -1,5 +1,5 @@
 ---
-title: "quarto_notes"
+title: "Living Physics Lab Notes"
 ---
 
 This is a Quarto website.

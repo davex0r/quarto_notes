@@ -3,4 +3,13 @@
     .math.display {
       font-size: 0.6em;
     }
+    .math.display {
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 0.5em 0;
+    }
+    .math.display .MathJax {
+      display: inline-block;
+      max-width: none;
+    }
   }

@@ -9,7 +9,8 @@
     "listing": "/tech.html",
     "items": [
       "/tech_posts/TAI/TAI.html",
-      "/tech_posts/Sloppy/Sloppy.html"
+      "/tech_posts/gram_projection/gram_projection.html",
+      "/tech_posts/sloppy_projection/sloppy_projection.html"
     ]
   }
 ]

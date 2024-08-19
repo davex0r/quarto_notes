@@ -6,7 +6,7 @@ author: "David Jordan"
 date: "2024-05-13"
 categories: ["Gram Matrix", "Projection Operators"]
 ---
-This is a quik note showing how the optimal projection can be derived in terms of the inversion of the gram matrix used in the [note](../sloppy_projection/sloppy_projection.qmd) on the connection between sloppiness and projection.
+This is a quick note showing how the optimal projection can be derived in terms of the inversion of the gram matrix used in the [note](../sloppy_projection/sloppy_projection.qmd) on the connection between sloppiness and projection.
 
 Lets derive $min_{w\in R^n}\left\lVert f-\sum_{i=0}^nw_it^i) \right\rVert^2$ with projections (this is the best nth degree polynomial approximation of a function f)
 

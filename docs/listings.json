@@ -6,6 +6,12 @@
     ]
   },
   {
+    "listing": "/concepts.html",
+    "items": [
+      "/concept_posts/welcome/index.html"
+    ]
+  },
+  {
     "listing": "/tech.html",
     "items": [
       "/tech_posts/TAI/TAI.html",

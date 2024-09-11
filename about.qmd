@@ -4,4 +4,4 @@ title: "About"
 
 ### Overview
 
-This is a repository for notes to share some aspects of the problems we are working on. Technical notes are generally theoretical, involve calculations, and aim to show how we are thinking about problems. Build notes are intended to aid in understanding and replicating our engineering designs.
+This is a repository for notes to share some aspects of the problems we are working on. Technical notes are generally theoretical, involve calculations, and aim to illustrate something formal.  Concept notes are more informal, and aim to show how I am thinking about problems. Build notes are intended to aid in understanding and replicating our engineering designs.

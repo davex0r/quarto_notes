@@ -1,5 +1,7 @@
 ---
 title: "Living Physics Lab Notes"
+feed: true
+
 ---
 
 This is a Quarto website.

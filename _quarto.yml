@@ -4,6 +4,8 @@ project:
 
 website:
   title: "Notebooks"
+  site-url: https:/notes.livingphysics.org
+  description: "Notes from the living physics Lab"
   navbar:
     left:
       - href: index.qmd
@@ -15,7 +17,8 @@ website:
       - icon: globe
         text: Main Site
         href: https://livingphysics.org
-
+      - icon: rss
+        href: index.xml
 format:
   html:
     theme: darkly

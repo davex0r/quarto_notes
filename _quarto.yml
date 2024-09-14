@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Notebooks"
-  site-url: "notes.livingphysics.org"
+  site-url: "https://notes.livingphysics.org"
   description: "Notes from the living physics Lab"
   navbar:
     left:

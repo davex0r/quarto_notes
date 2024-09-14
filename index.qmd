@@ -1,7 +1,12 @@
 ---
 title: "Living Physics Lab Notes"
 listing:
-    feed: true
+  contents: [build_posts,concept_posts,tech_posts]
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
 ---
 
 This is a Quarto website.

@@ -14,7 +14,7 @@
 <item>
   <title>Sailing Away</title>
   <dc:creator>David Jordan</dc:creator>
-  <link>https:/notes.livingphysics.org/notes/welcome/</link>
+  <link>https:/notes.livingphysics.org/notes/sailing/</link>
   <description><![CDATA[ 
 
 
@@ -26,8 +26,9 @@
 
  ]]></description>
   <category>news</category>
-  <guid>https:/notes.livingphysics.org/notes/welcome/</guid>
+  <guid>https:/notes.livingphysics.org/notes/sailing/</guid>
   <pubDate>Fri, 13 Sep 2024 23:00:00 GMT</pubDate>
+  <media:content url="https:/notes.livingphysics.org/notes/sailing/boats.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Welcome To Builds</title>

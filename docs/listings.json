@@ -6,18 +6,16 @@
     ]
   },
   {
-    "listing": "/concepts.html",
+    "listing": "/index.html",
     "items": [
+      "/notes/welcome/index.html",
       "/concept_posts/welcome/index.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/concepts.html",
     "items": [
-      "/concept_posts/welcome/index.html",
-      "/tech_posts/TAI/TAI.html",
-      "/tech_posts/gram_projection/gram_projection.html",
-      "/tech_posts/sloppy_projection/sloppy_projection.html"
+      "/concept_posts/welcome/index.html"
     ]
   },
   {

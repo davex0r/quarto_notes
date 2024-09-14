@@ -1,7 +1,7 @@
 ---
 title: "Living Physics Lab Notes"
 listing:
-  contents: [build_posts,concept_posts,tech_posts]
+  contents: [notes,concept_posts]
   sort: "date desc"
   type: default
   categories: false

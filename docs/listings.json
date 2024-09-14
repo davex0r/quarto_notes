@@ -12,6 +12,20 @@
     ]
   },
   {
+    "listing": "/index.html",
+    "items": [
+      "/about.html",
+      "/tech_posts/sloppy_projection/sloppy_projection.html",
+      "/builds.html",
+      "/concepts.html",
+      "/tech_posts/gram_projection/gram_projection.html",
+      "/tech_posts/TAI/TAI.html",
+      "/tech.html",
+      "/concept_posts/welcome/index.html",
+      "/builds_posts/welcome/index.html"
+    ]
+  },
+  {
     "listing": "/tech.html",
     "items": [
       "/tech_posts/TAI/TAI.html",

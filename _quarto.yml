@@ -24,6 +24,9 @@ format:
     theme: darkly
     css: styles.css
     toc: true
+feed:
+  type: rss
+  categories: [builds, concepts, tech]
 
 execute:
   freeze: auto

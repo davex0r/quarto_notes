@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: notes.livingphysics.org/sitemap.xml

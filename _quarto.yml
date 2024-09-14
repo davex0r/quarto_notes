@@ -18,6 +18,7 @@ website:
         text: Main Site
         href: https://livingphysics.org
       - icon: rss
+        text: RSS Feed
         href: index.xml
 format:
   html:

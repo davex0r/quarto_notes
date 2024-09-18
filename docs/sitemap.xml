@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://notes.livingphysics.org/builds.html</loc>
-    <lastmod>2024-09-18T08:54:24.701Z</lastmod>
+    <lastmod>2024-09-18T12:24:45.596Z</lastmod>
   </url>
   <url>
     <loc>https://notes.livingphysics.org/notes/sailing/index.html</loc>
     <lastmod>2024-09-14T17:27:22.256Z</lastmod>
   </url>
   <url>
-    <loc>https://notes.livingphysics.org/index.html</loc>
-    <lastmod>2024-09-18T08:54:42.439Z</lastmod>
+    <loc>https://notes.livingphysics.org/about.html</loc>
+    <lastmod>2024-09-11T09:35:20.429Z</lastmod>
   </url>
   <url>
     <loc>https://notes.livingphysics.org/concept_posts/welcome/index.html</loc>
-    <lastmod>2024-08-21T20:54:23.240Z</lastmod>
+    <lastmod>2024-09-18T12:24:00.922Z</lastmod>
   </url>
   <url>
     <loc>https://notes.livingphysics.org/tech_posts/TAI/TAI.html</loc>
@@ -33,12 +33,12 @@
     <lastmod>2024-09-14T10:03:51.001Z</lastmod>
   </url>
   <url>
-    <loc>https://notes.livingphysics.org/builds_posts/gen1_reactor_build/index.html</loc>
-    <lastmod>2024-09-18T12:22:13.974Z</lastmod>
+    <loc>https://notes.livingphysics.org/index.html</loc>
+    <lastmod>2024-09-18T12:24:16.083Z</lastmod>
   </url>
   <url>
-    <loc>https://notes.livingphysics.org/about.html</loc>
-    <lastmod>2024-09-11T09:35:20.429Z</lastmod>
+    <loc>https://notes.livingphysics.org/build_posts/gen1_reactor_build/index.html</loc>
+    <lastmod>2024-09-18T12:22:13.974Z</lastmod>
   </url>
   <url>
     <loc>https://notes.livingphysics.org/tech.html</loc>

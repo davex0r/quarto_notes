@@ -15,7 +15,7 @@
   <title>First Generation Bioreactor Build Note</title>
   <dc:creator>David Jordan</dc:creator>
   <dc:creator>Michele Cespa</dc:creator>
-  <link>https://notes.livingphysics.org/builds_posts/gen1_reactor_build/</link>
+  <link>https://notes.livingphysics.org/build_posts/gen1_reactor_build/</link>
   <description><![CDATA[ 
 
 
@@ -27,7 +27,7 @@
 <p>This note describes the design and construction of a RaspberryPi based 4-bioreactor system that has external illumination, external temperature recording, and magnetic stirring. The system monitors internal temperature and pressure using the BME280 series sensor and monitors turbidity via Infrared absorbance (<img src="https://latex.codecogs.com/png.latex?180%5E%7B%5Ccirc%7D"> ) and scattering (<img src="https://latex.codecogs.com/png.latex?135%5E%7B%5Ccirc%7D">). This system is based on the sealed long-term ecosystems designed by the Kuehn Lab<span class="citation" data-cites="De_Jesus_Astacio2021-ld">&nbsp;[1]</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://notes.livingphysics.org/builds_posts/gen1_reactor_build/images/bioreactor.png" class="img-fluid figure-img"></p>
+<p><img src="https://notes.livingphysics.org/build_posts/gen1_reactor_build/images/bioreactor.png" class="img-fluid figure-img"></p>
 <figcaption>First Generation Bioreactor (x4)</figcaption>
 </figure>
 </div>
@@ -83,7 +83,7 @@
 <p>The final construction is diagramed below. The vials are held in a layered structure built up from custom cut pieces of 5mm acrylic sheet. The diagrams for the different layers are in the <a href="https://github.com/m-cespa/RPi-Biosensor/tree/main/build/cad_files">cad_files</a> directory of the project git.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://notes.livingphysics.org/builds_posts/gen1_reactor_build/images/construction_diagram.png" class="img-fluid figure-img"></p>
+<p><img src="https://notes.livingphysics.org/build_posts/gen1_reactor_build/images/construction_diagram.png" class="img-fluid figure-img"></p>
 <figcaption>Construction Diagram: In this diagram, the light grey rectangles represent 2mm clear acrylic and the black rectangles are 5mm black acrylic. Red and Blue holes are holes for M3 screws to pass through The double hole plates have holes large enough to accommodate the screw heads.</figcaption>
 </figure>
 </div>
@@ -112,7 +112,7 @@
 </section></div> ]]></description>
   <category>builds</category>
   <category>bioreactor</category>
-  <guid>https://notes.livingphysics.org/builds_posts/gen1_reactor_build/</guid>
+  <guid>https://notes.livingphysics.org/build_posts/gen1_reactor_build/</guid>
   <pubDate>Tue, 03 Sep 2024 23:00:00 GMT</pubDate>
 </item>
 </channel>

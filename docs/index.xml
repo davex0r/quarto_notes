@@ -32,7 +32,111 @@
   <media:content url="https://notes.livingphysics.org/notes/sailing/boats.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>Welcome To Builds</title>
+  <title>First Generation Bioreactor Build Note</title>
+  <dc:creator>David Jordan</dc:creator>
+  <dc:creator>Michele Cespa</dc:creator>
+  <link>https://notes.livingphysics.org/build_posts/gen1_reactor_build/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>This note describes the design and construction of a RaspberryPi based 4-bioreactor system that has external illumination, external temperature recording, and magnetic stirring. The system monitors internal temperature and pressure using the BME280 series sensor and monitors turbidity via Infrared absorbance (<img src="https://latex.codecogs.com/png.latex?180%5E%7B%5Ccirc%7D"> ) and scattering (<img src="https://latex.codecogs.com/png.latex?135%5E%7B%5Ccirc%7D">). This system is based on the sealed long-term ecosystems designed by the Kuehn Lab<span class="citation" data-cites="De_Jesus_Astacio2021-ld">&nbsp;[1]</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen1_reactor_build/images/bioreactor.png" class="img-fluid figure-img"></p>
+<figcaption>First Generation Bioreactor (x4)</figcaption>
+</figure>
+</div>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This note will describe the build process in a series of steps which describe the design and construction of the following:</p>
+<ol type="1">
+<li>Variable speed, pulse wave modulated (PWM) magnetic stirring</li>
+<li>Programmable Illumination using NeoPixel 8 LED rings</li>
+<li>Turbidity measurements with reference using infrared LED’s and photodiodes.</li>
+<li>Vial surface temperature using DS18B20 Temperature Sensors</li>
+<li>External Temperature using PCT2075 Temperature Sensor.</li>
+<li>Internal Temperature, Pressure and Humidity using BME280 sensors</li>
+<li>Construction, and Assembly of Final Device</li>
+</ol>
+<p>Instructions for setting up your Raspberry Pi with the required libraries and the code to run this series of reactors can be found on Michele Cespa’s <a href="https://github.com/m-cespa/RPi-Biosensor">Github</a>. This also includes a <a href="https://github.com/m-cespa/RPi-Biosensor/blob/main/docs/schematic_labelled.png">diagram</a> of the wiring for all for the sensors. (Note this is run on Pi 3B+s, and there is a known issue with Pi5s not supporting the RPi.GPIO library). We have attempted to include all relevant information for recreating this build as inline links. Some of the products listed are from UK based suppliers, if you have trouble sourcing any of them where you are, reach out and I may be able to provide some advice on alternatives.</p>
+</section>
+<section id="design-and-construction" class="level1">
+<h1>Design and Construction</h1>
+<section id="stirring" class="level2">
+<h2 class="anchored" data-anchor-id="stirring">Magnetic Stirring</h2>
+<p>Magnetic stirring is done using PWM controlled PC fans as with magnetics attached. For this version, I have used Noctua NF-A6x25 <a href="https://www.amazon.co.uk/gp/product/B00VXTANZ4/">Fans</a>, which are 12V and 60mm square. The have anti-vibration pads and can be mounted directly to the 15mm <a href="https://www.makerbeam.com/openbeam/openbeam-15x15mm-profile-lengths-anodised-in-black/">construction rail</a> we have used as a frame. The frame consists of 2x 270mm and 4x150mm beams (more details in Construction and Assembly). A pair of <a href="https://www.amazon.co.uk/gp/product/B007UOXS1M/">magnets</a> is attached to the free face of each fan (the underside) with one “face up” next to one “face down” using 3M double stick <a href="https://www.amazon.co.uk/gp/product/B09XFDRHXW">foam tape</a>. The fans include a Y-adapter which can be used to make a tree so that all fans can be powered and controlled with a single connector. The magnets spin a 10mm <a href="https://www.amazon.co.uk/gp/product/B0C237M15K">stir bar</a> placed inside each vial.</p>
+</section>
+<section id="illumination" class="level2">
+<h2 class="anchored" data-anchor-id="illumination">Programmable Illumination</h2>
+<p>Illumination is provided from below using a Neopixel 8 LED <a href="https://coolcomponents.co.uk/products/8-led-32mm-ring-ws2812b-5050-rgb-led-with-integrated-drivers-adafruit-neopixel-compatible">ring</a>, mounted above the fan. This allows for arbitrary RGB coloring. The NeoPixel library allows the specification of color in 3-element RGB format. The rings are connected in series, but fully addressable individually. Sample code for programming the rings is provided in the git repository in the <a href="https://github.com/m-cespa/RPi-Biosensor/blob/main/build/neo_pixel.py">build</a> directory. A custom base which allows for the cables to be daisy chained as well as a holding plate for each ring were laser cut. The assembly is outlined below.</p>
+</section>
+<section id="turbidity" class="level2">
+<h2 class="anchored" data-anchor-id="turbidity">Turbidity Measurement Layer</h2>
+<p>Turbidity is measured using simple <a href="https://uk.rs-online.com/web/p/photodiodes/6548895">photodiode</a> circuits to convert photons into a voltage that is read by one of the two analog to digital converters (ADCs) and read over the i2c protocol on the Raspberry Pi. We have employed a <a href="https://thepihut.com/products/adafruit-ads1115-16-bit-adc-4-channel-with-programmable-gain-amplifier">4-channel 16 bit ADC</a> and an <a href="https://thepihut.com/products/adafruit-ads7830-8-channel-8-bit-adc-with-i2c-stemma-qt-qwiic">8-channel 8 bit ADC</a> to record the 12 photodiode signals. 4 pass-thru absorbance signals at (<img src="https://latex.codecogs.com/png.latex?180%5E%7B%5Ccirc%7D"> ) and 4 scattering signals at (<img src="https://latex.codecogs.com/png.latex?135%5E%7B%5Ccirc%7D">) and 4 <a href="https://uk.rs-online.com/web/p/ir-leds/2108076">IR LED</a> output reference signals. This design was adapted from a similar design in the commerically available <a href="https://pioreactor.com/">PioReactor</a>. We have 4 of these that will be used for another part of the project. Each of the LEDs and photodiodes is held in the correct orientation and location by placing it in an appropriately shaped laser cut-out. The LEDs were provided a constant current that could be switched on and off using a <a href="https://thepihut.com/products/femtobuck-led-driver">FemtoBuck</a>.</p>
+</section>
+<section id="surface_temp" class="level2">
+<h2 class="anchored" data-anchor-id="surface_temp">Vial Surface Temperature Layer</h2>
+<p>Above the Turbidity sensor layer, there are 4 <a href="https://thepihut.com/products/ds18b20-one-wire-digital-temperature-sensor">DS18B20</a> one-wire temperature probes that monitor the temperature at the outside surface of the vial. Using the 1-wire protocol allows fro all of these to be wired together in parallel, which is greatly simplified by using these daisy chain <a href="https://www.mouser.co.uk/ProductDetail/SchmartBoard/920-0194-50?qs=wd5RIQLrsJiI3jb%252BR3OjdQ%3D%3D">wires</a><sup>1</sup> from Mouser.</p>
+</section>
+<section id="pressure" class="level2">
+<h2 class="anchored" data-anchor-id="pressure">Internal Pressure and Temperature Sensors</h2>
+<p>The internal pressure sensors are mounted in the lids of the vials in a manner similar to the one described in <span class="citation" data-cites="De_Jesus_Astacio2021-ld">&nbsp;[1]</span>. First, 4 holes were laser cut into each lid to allow a 4-pin male-male header to pass through snugly. This was then sealed with hermetic sealing epoxy (<a href="https://www.epotek.com/docs/en/Datasheet/H74.pdf">Epo-tek H74</a>). These reactors are designed for experiments much shorter than those described in <span class="citation" data-cites="De_Jesus_Astacio2021-ld">&nbsp;[1]</span>, so less expensive epoxy could probably be used. Each <a href="https://www.amazon.co.uk/AZDelivery-Barometric-Temperature-Humidity-Raspberry/dp/B07HMQMW6M/">BME280</a> sensor board was soldered with a 4-pin female header. On the outside, the same daisy chain wires were used to provide power to each sensor board in parallel, and an individual wires were attached to the pins for each SDA and SCL pin and connected to a <a href="">4-channel multiplexer</a>.</p>
+</section>
+<section id="external_temp" class="level2">
+<h2 class="anchored" data-anchor-id="external_temp">External Temperature</h2>
+<p>Finally an external temperature sensor (<a href="https://thepihut.com/products/adafruit-pct2075-temperature-sensor-stemma-qt-qwiic-ada4369">PCT2075</a>) was added in series with all fo the other i2c components to monitor the fluctuations in temperature in the room, due mostly to changes in the building-wide heating and cooling system. As this design does not incorporate onboard temperature control, the entire rector can be either placed in an incubator or in a temperature controlled room if desired. The next generation reactor will incorporate onboard temperature control.</p>
+</section>
+<section id="assembly" class="level2">
+<h2 class="anchored" data-anchor-id="assembly">Construction and Assembly</h2>
+<section id="general-notes-on-electronics" class="level3">
+<h3 class="anchored" data-anchor-id="general-notes-on-electronics">General Notes on Electronics</h3>
+<p>All of the sensor boards are powered by a single power supply and a combination of <a href="https://www.mouser.co.uk/ProductDetail/Texas-Instruments/LM7805CT-NOPB?qs=OYMYEaN9QmBS2GvaX6GSkQ%3D%3D">LM7805</a> and <a href="https://www.mouser.co.uk/ProductDetail/Texas-Instruments/LM7812CT-NOPB?qs=OYMYEaN9QmBofCpFKHiRuQ%3D%3D">LM7812</a> +5V and +12V voltage regulators. The i2c sensor boards have QWIIC connectors which pass through the power and the SDA/SCL signals. Because these have unique i2c addresses they can all be read independently (the four BMEs have the same i2c addresses and require the multiplexer, in general the same devices have the same address, but this can be altered to some extent with address jumper pins. Multiplexing was more convenient in this case). A variety of QWIIC connectors can be found <a href="https://thepihut.com/products/sparkfun-qwiic-cable-kit">here</a></p>
+</section>
+<section id="physical-construction" class="level3">
+<h3 class="anchored" data-anchor-id="physical-construction">Physical Construction</h3>
+<p>The final construction is diagramed below. The vials are held in a layered structure built up from custom cut pieces of 5mm acrylic sheet. The diagrams for the different layers are in the <a href="https://github.com/m-cespa/RPi-Biosensor/tree/main/build/cad_files">cad_files</a> directory of the project git.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen1_reactor_build/images/construction_diagram.png" class="img-fluid figure-img"></p>
+<figcaption>Construction Diagram: In this diagram, the light grey rectangles represent 2mm clear acrylic and the black rectangles are 5mm black acrylic. Red and Blue holes are holes for M3 screws to pass through The double hole plates have holes large enough to accommodate the screw heads.</figcaption>
+</figure>
+</div>
+<p>The basic build connects two H-frames made from a 270mm construction rail with the fans themselves. The 4 fans comprise 240mm leaving 10mm between the fans. The vials themselves are spaced 70mm center to center. The idea is that each sensor layer is comprised of three acrylic sheet layers, a bottom and otp layer, and then a middle layer which has the cutouts for the individual components as shown in the .dxf files. Attachments to the construction rails are done with M3 screws and hex nuts. 3mm M3 screws for constructing the H-frame and 6mm screws for attaching the fans to the rails. These can be drop in T-nuts but if you are using hex nuts the fans will have to be slid into place one at a time.</p>
+</section>
+</section>
+</section>
+<section id="conclusions-and-future-notes" class="level1">
+<h1>Conclusions and Future Notes</h1>
+<p>In the future, a more detailed guide to the construction will be uploaded, along with photos and step-by-step instructions. In the meantime, if you have need any assistance in construction please feel free to e-mail me or to open an issue in the git repository.</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0">
+<div id="ref-De_Jesus_Astacio2021-ld" class="csl-entry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">L. M. de Jesús Astacio, K. H. Prabhakara, Z. Li, H. Mickalide, and S. Kuehn, <em>Closed Microbial Communities Self-Organize to Persistently Cycle Carbon</em>, Proceedings of the National Academy of Sciences <strong>118</strong>, e2013564118 (2021).</div>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>(194:Red, 195:Black)↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>builds</category>
+  <category>bioreactor</category>
+  <guid>https://notes.livingphysics.org/build_posts/gen1_reactor_build/</guid>
+  <pubDate>Tue, 03 Sep 2024 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Welcome To Concepts</title>
   <dc:creator>David Jordan</dc:creator>
   <link>https://notes.livingphysics.org/concept_posts/welcome/</link>
   <description><![CDATA[ 

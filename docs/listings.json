@@ -2,19 +2,20 @@
   {
     "listing": "/builds.html",
     "items": [
-      "/builds_posts/gen1_reactor_build/index.html"
+      "/build_posts/gen1_reactor_build/index.html"
+    ]
+  },
+  {
+    "listing": "/concepts.html",
+    "items": [
+      "/concept_posts/welcome/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
       "/notes/sailing/index.html",
-      "/concept_posts/welcome/index.html"
-    ]
-  },
-  {
-    "listing": "/concepts.html",
-    "items": [
+      "/build_posts/gen1_reactor_build/index.html",
       "/concept_posts/welcome/index.html"
     ]
   },

@@ -2,7 +2,7 @@
 title: "Welcome To Concepts"
 author: "David Jordan"
 date: "2024-08-14"
-categories: [news]
+categories: [News]
 ---
 
 This is the first build post in a Quarto blog. Welcome!

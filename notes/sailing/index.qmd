@@ -2,7 +2,7 @@
 title: "Sailing Away"
 author: "David Jordan"
 date: "2024-09-14"
-categories: [news]
+categories: [News]
 image: "boats.jpeg"
 ---
 

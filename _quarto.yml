@@ -27,5 +27,7 @@ format:
     toc: true
 feed:
   type: rss
+  image-height: 60
+  image-width: 60
 execute:
   freeze: auto

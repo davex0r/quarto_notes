@@ -4,7 +4,7 @@
     "href": "builds.html",
     "title": "Build Notes",
     "section": "",
-    "text": "Welcome To Builds\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nAug 14, 2024\n\n\nDavid Jordan\n\n\n\n\n\n\nNo matching items"
+    "text": "First Generation Bioreactor Build Note\n\n\n\n\n\n\nbuilds\n\n\nbioreactor\n\n\n\n\n\n\n\n\n\nSep 4, 2024\n\n\nDavid Jordan, Michele Cespa\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/sailing/index.html",
@@ -70,11 +70,67 @@
     "text": "Welcome To Builds\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nAug 14, 2024\n\n\nDavid Jordan\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "builds_posts/welcome/index.html",
-    "href": "builds_posts/welcome/index.html",
-    "title": "Welcome To Builds",
+    "objectID": "builds_posts/gen1_reactor_build/index.html",
+    "href": "builds_posts/gen1_reactor_build/index.html",
+    "title": "First Generation Bioreactor Build Note",
     "section": "",
-    "text": "This is the first build post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "This note describes the design and construction of a RaspberryPi based 4-bioreactor system that has external illumination, external temperature recording, and magnetic stirring. The system monitors internal temperature and pressure using the BME280 series sensor and monitors turbidity via Infrared absorbance (\\(180^{\\circ}\\) ) and scattering (\\(135^{\\circ}\\)). This system is based on the sealed long-term ecosystems designed by the Kuehn Lab [1].\n\n\n\nFirst Generation Bioreactor (x4)"
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#stirring",
+    "href": "builds_posts/gen1_reactor_build/index.html#stirring",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "Magnetic Stirring",
+    "text": "Magnetic Stirring\nMagnetic stirring is done using PWM controlled PC fans as with magnetics attached. For this version, I have used Noctua NF-A6x25 Fans, which are 12V and 60mm square. The have anti-vibration pads and can be mounted directly to the 15mm construction rail we have used as a frame. The frame consists of 2x 270mm and 4x150mm beams (more details in Construction and Assembly). A pair of magnets is attached to the free face of each fan (the underside) with one “face up” next to one “face down” using 3M double stick foam tape. The fans include a Y-adapter which can be used to make a tree so that all fans can be powered and controlled with a single connector. The magnets spin a 10mm stir bar placed inside each vial."
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#illumination",
+    "href": "builds_posts/gen1_reactor_build/index.html#illumination",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "Programmable Illumination",
+    "text": "Programmable Illumination\nIllumination is provided from below using a Neopixel 8 LED ring, mounted above the fan. This allows for arbitrary RGB coloring. The NeoPixel library allows the specification of color in 3-element RGB format. The rings are connected in series, but fully addressable individually. Sample code for programming the rings is provided in the git repository in the build directory. A custom base which allows for the cables to be daisy chained as well as a holding plate for each ring were laser cut. The assembly is outlined below."
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#turbidity",
+    "href": "builds_posts/gen1_reactor_build/index.html#turbidity",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "Turbidity Measurement Layer",
+    "text": "Turbidity Measurement Layer\nTurbidity is measured using simple photodiode circuits to convert photons into a voltage that is read by one of the two analog to digital converters (ADCs) and read over the i2c protocol on the Raspberry Pi. We have employed a 4-channel 16 bit ADC and an 8-channel 8 bit ADC to record the 12 photodiode signals. 4 pass-thru absorbance signals at (\\(180^{\\circ}\\) ) and 4 scattering signals at (\\(135^{\\circ}\\)) and 4 IR LED output reference signals. This design was adapted from a similar design in the commerically available PioReactor. We have 4 of these that will be used for another part of the project. Each of the LEDs and photodiodes is held in the correct orientation and location by placing it in an appropriately shaped laser cut-out. The LEDs were provided a constant current that could be switched on and off using a FemtoBuck."
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#surface_temp",
+    "href": "builds_posts/gen1_reactor_build/index.html#surface_temp",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "Vial Surface Temperature Layer",
+    "text": "Vial Surface Temperature Layer\nAbove the Turbidity sensor layer, there are 4 DS18B20 one-wire temperature probes that monitor the temperature at the outside surface of the vial. Using the 1-wire protocol allows fro all of these to be wired together in parallel, which is greatly simplified by using these daisy chain wires1 from Mouser."
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#pressure",
+    "href": "builds_posts/gen1_reactor_build/index.html#pressure",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "Internal Pressure and Temperature Sensors",
+    "text": "Internal Pressure and Temperature Sensors\nThe internal pressure sensors are mounted in the lids of the vials in a manner similar to the one described in  [1]. First, 4 holes were laser cut into each lid to allow a 4-pin male-male header to pass through snugly. This was then sealed with hermetic sealing epoxy (Epo-tek H74). These reactors are designed for experiments much shorter than those described in  [1], so less expensive epoxy could probably be used. Each BME280 sensor board was soldered with a 4-pin female header. On the outside, the same daisy chain wires were used to provide power to each sensor board in parallel, and an individual wires were attached to the pins for each SDA and SCL pin and connected to a 4-channel multiplexer."
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#external_temp",
+    "href": "builds_posts/gen1_reactor_build/index.html#external_temp",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "External Temperature",
+    "text": "External Temperature\nFinally an external temperature sensor (PCT2075) was added in series with all fo the other i2c components to monitor the fluctuations in temperature in the room, due mostly to changes in the building-wide heating and cooling system. As this design does not incorporate onboard temperature control, the entire rector can be either placed in an incubator or in a temperature controlled room if desired. The next generation reactor will incorporate onboard temperature control."
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#assembly",
+    "href": "builds_posts/gen1_reactor_build/index.html#assembly",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "Construction and Assembly",
+    "text": "Construction and Assembly\n\nGeneral Notes on Electronics\nAll of the sensor boards are powered by a single power supply and a combination of LM7805 and LM7812 +5V and +12V voltage regulators. The i2c sensor boards have QWIIC connectors which pass through the power and the SDA/SCL signals. Because these have unique i2c addresses they can all be read independently (the four BMEs have the same i2c addresses and require the multiplexer, in general the same devices have the same address, but this can be altered to some extent with address jumper pins. Multiplexing was more convenient in this case). A variety of QWIIC connectors can be found here\n\n\nPhysical Construction\nThe final construction is diagramed below. The vials are held in a layered structure built up from custom cut pieces of 5mm acrylic sheet. The diagrams for the different layers are in the cad_files directory of the project git.\n\n\n\nConstruction Diagram: In this diagram, the light grey rectangles represent 2mm clear acrylic and the black rectangles are 5mm black acrylic. Red and Blue holes are holes for M3 screws to pass through The double hole plates have holes large enough to accommodate the screw heads.\n\n\nThe basic build connects two H-frames made from a 270mm construction rail with the fans themselves. The 4 fans comprise 240mm leaving 10mm between the fans. The vials themselves are spaced 70mm center to center. The idea is that each sensor layer is comprised of three acrylic sheet layers, a bottom and otp layer, and then a middle layer which has the cutouts for the individual components as shown in the .dxf files. Attachments to the construction rails are done with M3 screws and hex nuts. 3mm M3 screws for constructing the H-frame and 6mm screws for attaching the fans to the rails. These can be drop in T-nuts but if you are using hex nuts the fans will have to be slid into place one at a time."
+  },
+  {
+    "objectID": "builds_posts/gen1_reactor_build/index.html#footnotes",
+    "href": "builds_posts/gen1_reactor_build/index.html#footnotes",
+    "title": "First Generation Bioreactor Build Note",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\n(194:Red, 195:Black)↩︎"
   },
   {
     "objectID": "about.html",

@@ -10,7 +10,7 @@
 <atom:link href="https://notes.livingphysics.org/builds.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from the living physics Lab</description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Tue, 03 Sep 2024 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 17 Sep 2024 23:00:00 GMT</lastBuildDate>
 <item>
   <title>First Generation Bioreactor Build Note</title>
   <dc:creator>David Jordan</dc:creator>
@@ -113,7 +113,7 @@
   <category>builds</category>
   <category>bioreactor</category>
   <guid>https://notes.livingphysics.org/build_posts/gen1_reactor_build/</guid>
-  <pubDate>Tue, 03 Sep 2024 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 17 Sep 2024 23:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

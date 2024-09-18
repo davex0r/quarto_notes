@@ -14,8 +14,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/notes/sailing/index.html",
       "/build_posts/gen1_reactor_build/index.html",
+      "/notes/sailing/index.html",
       "/concept_posts/welcome/index.html"
     ]
   },

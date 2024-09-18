@@ -2,7 +2,7 @@
 title: "First Generation Bioreactor Build Note"
 author: ["David Jordan", "Michele Cespa"]
 code-fold: true
-date: "2024-09-04"
+date: "2024-09-18"
 categories: [builds, bioreactor]
 bibliography: references.bib
 csl: styles/american-physical-society.csl

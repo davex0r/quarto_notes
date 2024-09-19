@@ -26,7 +26,7 @@
 <blockquote class="blockquote">
 <p>An open-source scientific and technical publishing system</p>
 </blockquote>
-<p>based on markdown that allows for equations and code to be easily embedded into posts. This <a href="https://quarto.org/docs/guide/">guide</a> provides an excellent overview of setting up a quarto notes site and how to author individual posts as well as the basics of markdown and . I referred to this to set up the website, the different notes sections, the main index, and the RSS feed. This site is separately hosted from the my main website, which I wrote mostly in html and is hosted on github pages with a custom domain.</p>
+<p>based on markdown that allows for equations and code to be easily embedded into posts. This <a href="https://quarto.org/docs/guide/">guide</a> provides an excellent overview of setting up a quarto notes site and how to author individual posts as well as the basics of markdown. I referred to this to set up the website, the different notes sections, the main index, and the RSS feed. This site is separately hosted from the my main website, which I wrote mostly in html and is hosted on github pages with a custom domain.</p>
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>I like quarto because you can embed both math equations and code directly into posts, and turn this into a static website very quickly, reducing the time between writing and publishing. I also enjoy <a href="https://obsidian.md">Obsidian</a> a lot for personal notes, but found myself having to generate figures separately which slowed the online publishing process. I also began using Julia extensively so this eased the transition as I could generate figures this way instead of in Matlab.</p>

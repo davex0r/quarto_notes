@@ -26,7 +26,7 @@ I like quarto because you can embed both math equations and code directly into p
 
 ### Setting up my local environment
 
-1. First I installed [Visual Studio Code](https://code.visualstudio.com) and added the [Quarto](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), [Julia](https://marketplace.visualstudio.com/items?itemName=julialang.language-julia), [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker), and the [Scientific Terms](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-scientific-terms) extensions via the extensions sidebar in the left panel.  The code spell checker extension allows for mistake highlighting in VS code, and the shortcut for making a correction is to click on the underlined word and press Command + Perion(.) on my Mac. 
+1. First I installed [Visual Studio Code](https://code.visualstudio.com) and added the [Quarto](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), [Julia](https://marketplace.visualstudio.com/items?itemName=julialang.language-julia), [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker), and the [Scientific Terms](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-scientific-terms) extensions via the extensions sidebar in the left panel.  The code spell checker extension allows for mistake highlighting in VS code, and the shortcut for making a correction is to click on the underlined word and press Command + Period(.) on my Mac. 
 
 2. I render the website locally using the `quarto render` command and the files are built into the `docs` subdirectory as the following code is in the `_quarto.yml` file in the `quarto_notes` directory.
 ```yml
@@ -45,18 +45,18 @@ Eventually, I would like to integrate a commenting system as well, but as this s
 
 ### Setting up the remote environment.
 
-I referred to [this guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-static-website-to-the-cloud-with-digitalocean-app-platform) provided by Digital Ocean no how to set up a static site app.  The guide was simple and worked flawlessly so I will only describe below how I got my app to point to my custom subdomain. Digital ocean also provides a very good [guide](https://docs.digitalocean.com/products/app-platform/how-to/manage-domains/) for this.
+I referred to [this guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-static-website-to-the-cloud-with-digitalocean-app-platform) provided by Digital Ocean no how to set up a static site app.  The only difference is that you will need to specify the source directory as `docs`.  Make sure auto deploy is on.  You can find this in settings by clicking on the component called *your_repository-docs* and can change it in the sections called Source. The guide was simple and worked flawlessly so I will only describe below how I got my app to point to my custom subdomain. Digital ocean also provides a very good [guide](https://docs.digitalocean.com/products/app-platform/how-to/manage-domains/) for this. 
 
-1. You will need to purchase or otherwise obtain a domain name. My domains are managed by squarespace domains, and were inherited here from google domains.  If you are choosing a domain provider and want to use the Obsidian publish feature with your domain as well, I suggest using [cloudfare](https://help.obsidian.md/Obsidian+Publish/Set+up+a+custom+domain). 
+1. You will need to purchase or otherwise obtain a domain name. My domains are managed by SquareSpace domains, and were inherited here from Google domains.  If you are choosing a domain provider and want to use the Obsidian publish feature with your domain as well, I suggest using [Cloudfare](https://help.obsidian.md/Obsidian+Publish/Set+up+a+custom+domain). 
 
 
 2. On the Digital Ocean app dashboard for your site, in the top left there is a button that says Actions.  If you click this one action is manage domains.  You can also get here by clicking the setting tab and scrolling down to Domains.  Here you will find the IP address for your app, mine looks like *app_ip_address.ondigitalocean.app*.  You will need this for the CNAME record in the next step.  Here you will also see a button called Add Domain.  Click it and add the subdomain you want to point to your app.  Mine is *notes.livingphysics.org*.
 
-3. On the squarespace domain management site, there is a sidebar option called DNS and a sub option called DNS Settings.  Here you can add custom records.  I added a CNAME record as shown below.  Digital Ocean provides a guide for this in general [here](https://docs.digitalocean.com/products/networking/dns/how-to/manage-records/).
+3. On the SquareSpace domain management site, there is a sidebar option called DNS and a sub option called DNS Settings.  Here you can add custom records.  I added a CNAME record as shown below.  Digital Ocean provides a guide for this in general [here](https://docs.digitalocean.com/products/networking/dns/how-to/manage-records/).
 
 ```
 Host    Type    Priority    Data
 notes   CNAME   ---         app_ip_address.ondigitalocean.app
 ```
 
-That should be everything you need to get up and running with your site.  As always with these things, there is probably a ton of latent knowledge I have neglected to share, so don't hesitate to reach out with questions and I will periodically provide updates to this post for parts tat are unclear.  
+That should be everything you need to get up and running with your site.  As always with these things, there is probably a ton of latent knowledge I have neglected to share, so don't hesitate to reach out with questions. I will also periodically provide updates to this post to address points that are unclear or poorly explained.  

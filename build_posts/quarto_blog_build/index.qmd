@@ -7,7 +7,6 @@ categories: [Builds, Notes]
 bibliography: references.bib
 csl: ../styles/american-physical-society.csl
 draft: false
-image: "writing.png"
 feed:
     image-height: 60
     image-width: 60

@@ -1,0 +1,62 @@
+---
+title: "How I Built This Quarto Notes Site"
+author: ["David Jordan"]
+code-fold: true
+date: "2024-09-19"
+categories: [Builds, Notes]
+bibliography: references.bib
+csl: ../styles/american-physical-society.csl
+draft: false
+feed:
+    image-height: 60
+    image-width: 60
+---
+This note describes how I set up and hosted this quarto notes site on the notes.x subdomain of my domain [livingphysics.org](https://www.livingphysics.org).  To do this I run quarto locally in [Visual Studio Code](https://code.visualstudio.com) and serve the site using a [DigitalOcean](https://www.digitalocean.com) app with a custom domain that is managed by SquareSpace.  As of this writing (September '24) Digital Ocean allows you to create 3 free apps.  
+
+[Quarto](quarto.org) is a 
+
+> An open-source scientific and technical publishing system
+
+based on markdown that allows for equations and code to be easily embedded into posts. This [guide](https://quarto.org/docs/guide/) provides an excellent overview of setting up a quarto notes site and how to author individual posts as well as the basics of markdown and . I referred to this to set up the website, the different notes sections, the main index, and the RSS feed.  This site is separately hosted from the my main website, which I wrote mostly in html and is hosted on github pages with a custom domain.  
+
+# Overview
+I like quarto because you can embed both math equations and code directly into posts, and turn this into a static website very quickly, reducing the time between writing and publishing.  I also enjoy [Obsidian](https://obsidian.md) a lot for personal notes, but found myself having to generate figures separately which slowed the online publishing process. I also began using Julia extensively so this eased the transition as I could generate figures this way instead of in Matlab. 
+
+## Guide
+
+### Setting up my local environment
+
+1. First I installed [Visual Studio Code](https://code.visualstudio.com) and added the [Quarto](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), [Julia](https://marketplace.visualstudio.com/items?itemName=julialang.language-julia), [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker), and the [Scientific Terms](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-scientific-terms) extensions via the extensions sidebar in the left panel.  The code spell checker extension allows for mistake highlighting in VS code, and the shortcut for making a correction is to click on the underlined word and press Command + Perion(.) on my Mac. 
+
+2. I render the website locally using the `quarto render` command and the files are built into the `docs` subdirectory as the following code is in the `_quarto.yml` file in the `quarto_notes` directory.
+```yml
+project:
+  type: website
+  output-dir: docs
+```
+
+3. The `quarto_notes` directory is a git repository that is synced to a public github repository.  I created this using the github desktop client. This is convenient because after rendering, it is simple to `git commit` and `git push` the changes to your public repository. Downstream, the app will be configured to rebuild you site after a new commit is pushed. The repository can be found [here](https://github.com/davex0r/quarto_notes). This has a few benefits:
+
+- as it is a public repository, others can view the source code for the site directly which can help them replicate parts of the site 
+- there is robust version control and version history, which allows changes to posts to be tracked over time.  This provides a record of revisions
+- comments and issues (both technological and scientific) can be opened using the [GitHub issues](https://github.com/davex0r/quarto_notes/issues) feature. 
+
+Eventually, I would like to integrate a commenting system as well, but as this site is currently served as a static site, it likely requires an upgrade to a paid Digital Ocean app.  
+
+### Setting up the remote environment.
+
+I referred to [this guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-static-website-to-the-cloud-with-digitalocean-app-platform) provided by Digital Ocean no how to set up a static site app.  The guide was simple and worked flawlessly so I will only describe below how I got my app to point to my custom subdomain. Digital ocean also provides a very good [guide](https://docs.digitalocean.com/products/app-platform/how-to/manage-domains/) for this.
+
+1. You will need to purchase or otherwise obtain a domain name. My domains are managed by squarespace domains, and were inherited here from google domains.  If you are choosing a domain provider and want to use the Obsidian publish feature with your domain as well, I suggest using [cloudfare](https://help.obsidian.md/Obsidian+Publish/Set+up+a+custom+domain). 
+
+
+2. On the Digital Ocean app dashboard for your site, in the top left there is a button that says Actions.  If you click this one action is manage domains.  You can also get here by clicking the setting tab and scrolling down to Domains.  Here you will find the IP address for your app, mine looks like *app_ip_address.ondigitalocean.app*.  You will need this for the CNAME record in the next step.  Here you will also see a button called Add Domain.  Click it and add the subdomain you want to point to your app.  Mine is *notes.livingphysics.org*.
+
+3. On the squarespace domain management site, there is a sidebar option called DNS and a sub option called DNS Settings.  Here you can add custom records.  I added a CNAME record as shown below.  Digital Ocean provides a guide for this in general [here](https://docs.digitalocean.com/products/networking/dns/how-to/manage-records/).
+
+```
+Host    Type    Priority    Data
+notes   CNAME   ---         app_ip_address.ondigitalocean.app
+```
+
+That should be everything you need to get up and running with your site.  As always with these things, there is probably a ton of latent knowledge I have neglected to share, so don't hesitate to reach out with questions and I will periodically provide updates to this post for parts tat are unclear.  

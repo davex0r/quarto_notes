@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="David Jordan">
+<meta name="dcterms.date" content="2024-09-19">
 
-<title>Notebooks - Living Physics Lab Notes</title>
+<title>Notebooks - How I Built This Quarto Notes Site</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,68 +102,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Notebooks" href="index.xml" data-external="1"></head>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
 <body class="nav-fixed">
 
@@ -138,7 +114,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Notebooks</span>
     </a>
   </div>
@@ -149,23 +125,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Notes Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./tech.html"> 
+    <a class="nav-link" href="../../tech.html"> 
 <span class="menu-text">Technical Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./builds.html"> 
+    <a class="nav-link" href="../../builds.html"> 
 <span class="menu-text">Build Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./concepts.html"> 
+    <a class="nav-link" href="../../concepts.html"> 
 <span class="menu-text">Concept Notes</span></a>
   </li>  
   <li class="nav-item">
@@ -174,7 +150,7 @@ window.Quarto = {
 <span class="menu-text">Main Site</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text">RSS Feed</span></a>
   </li>  
@@ -188,184 +164,110 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Living Physics Lab Notes</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">How I Built This Quarto Notes Site</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Builds</div>
+                <div class="quarto-category">Notes</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Jordan </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 19, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Bioreactor">Bioreactor <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Builds">Builds <span class="quarto-category-count">(2)</span></div><div class="category" data-category="News">News <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Notes">Notes <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#guide" id="toc-guide" class="nav-link" data-scroll-target="#guide">Guide</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-my-local-environment" id="toc-setting-up-my-local-environment" class="nav-link" data-scroll-target="#setting-up-my-local-environment">Setting up my local environment</a></li>
+  <li><a href="#setting-up-the-remote-environment." id="toc-setting-up-the-remote-environment." class="nav-link" data-scroll-target="#setting-up-the-remote-environment.">Setting up the remote environment.</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<p>This note describes how I set up and hosted this quarto notes site on the notes.x subdomain of my domain <a href="https://www.livingphysics.org">livingphysics.org</a>. To do this I run quarto locally in <a href="https://code.visualstudio.com">Visual Studio Code</a> and serve the site using a <a href="https://www.digitalocean.com">DigitalOcean</a> app with a custom domain that is managed by SquareSpace. As of this writing (September ’24) Digital Ocean allows you to create 3 free apps.</p>
+<p><a href="quarto.org">Quarto</a> is a</p>
+<blockquote class="blockquote">
+<p>An open-source scientific and technical publishing system</p>
+</blockquote>
+<p>based on markdown that allows for equations and code to be easily embedded into posts. This <a href="https://quarto.org/docs/guide/">guide</a> provides an excellent overview of setting up a quarto notes site and how to author individual posts as well as the basics of markdown and . I referred to this to set up the website, the different notes sections, the main index, and the RSS feed. This site is separately hosted from the my main website, which I wrote mostly in html and is hosted on github pages with a custom domain.</p>
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>I like quarto because you can embed both math equations and code directly into posts, and turn this into a static website very quickly, reducing the time between writing and publishing. I also enjoy <a href="https://obsidian.md">Obsidian</a> a lot for personal notes, but found myself having to generate figures separately which slowed the online publishing process. I also began using Julia extensively so this eased the transition as I could generate figures this way instead of in Matlab.</p>
+<section id="guide" class="level2">
+<h2 class="anchored" data-anchor-id="guide">Guide</h2>
+<section id="setting-up-my-local-environment" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-my-local-environment">Setting up my local environment</h3>
+<ol type="1">
+<li><p>First I installed <a href="https://code.visualstudio.com">Visual Studio Code</a> and added the <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">Quarto</a>, <a href="https://marketplace.visualstudio.com/items?itemName=julialang.language-julia">Julia</a>, <a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a>, and the <a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-scientific-terms">Scientific Terms</a> extensions via the extensions sidebar in the left panel. The code spell checker extension allows for mistake highlighting in VS code, and the shortcut for making a correction is to click on the underlined word and press Command + Perion(.) on my Mac.</p></li>
+<li><p>I render the website locally using the <code>quarto render</code> command and the files are built into the <code>docs</code> subdirectory as the following code is in the <code>_quarto.yml</code> file in the <code>quarto_notes</code> directory.</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>The <code>quarto_notes</code> directory is a git repository that is synced to a public github repository. I created this using the github desktop client. This is convenient because after rendering, it is simple to <code>git commit</code> and <code>git push</code> the changes to your public repository. Downstream, the app will be configured to rebuild you site after a new commit is pushed. The repository can be found <a href="https://github.com/davex0r/quarto_notes">here</a>. This has a few benefits:</li>
+</ol>
+<ul>
+<li>as it is a public repository, others can view the source code for the site directly which can help them replicate parts of the site</li>
+<li>there is robust version control and version history, which allows changes to posts to be tracked over time. This provides a record of revisions</li>
+<li>comments and issues (both technological and scientific) can be opened using the <a href="https://github.com/davex0r/quarto_notes/issues">GitHub issues</a> feature.</li>
+</ul>
+<p>Eventually, I would like to integrate a commenting system as well, but as this site is currently served as a static site, it likely requires an upgrade to a paid Digital Ocean app.</p>
+</section>
+<section id="setting-up-the-remote-environment." class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-the-remote-environment.">Setting up the remote environment.</h3>
+<p>I referred to <a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-static-website-to-the-cloud-with-digitalocean-app-platform">this guide</a> provided by Digital Ocean no how to set up a static site app. The guide was simple and worked flawlessly so I will only describe below how I got my app to point to my custom subdomain. Digital ocean also provides a very good <a href="https://docs.digitalocean.com/products/app-platform/how-to/manage-domains/">guide</a> for this.</p>
+<ol type="1">
+<li><p>You will need to purchase or otherwise obtain a domain name. My domains are managed by squarespace domains, and were inherited here from google domains. If you are choosing a domain provider and want to use the Obsidian publish feature with your domain as well, I suggest using <a href="https://help.obsidian.md/Obsidian+Publish/Set+up+a+custom+domain">cloudfare</a>.</p></li>
+<li><p>On the Digital Ocean app dashboard for your site, in the top left there is a button that says Actions. If you click this one action is manage domains. You can also get here by clicking the setting tab and scrolling down to Domains. Here you will find the IP address for your app, mine looks like <em>app_ip_address.ondigitalocean.app</em>. You will need this for the CNAME record in the next step. Here you will also see a button called Add Domain. Click it and add the subdomain you want to point to your app. Mine is <em>notes.livingphysics.org</em>.</p></li>
+<li><p>On the squarespace domain management site, there is a sidebar option called DNS and a sub option called DNS Settings. Here you can add custom records. I added a CNAME record as shown below. Digital Ocean provides a guide for this in general <a href="https://docs.digitalocean.com/products/networking/dns/how-to/manage-records/">here</a>.</p></li>
+</ol>
+<pre><code>Host    Type    Priority    Data
+notes   CNAME   ---         app_ip_address.ondigitalocean.app</code></pre>
+<p>That should be everything you need to get up and running with your site. As always with these things, there is probably a ton of latent knowledge I have neglected to share, so don’t hesitate to reach out with questions and I will periodically provide updates to this post for parts tat are unclear.</p>
 
 
+</section>
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Builds,Notes" data-listing-date-sort="1726700400000" data-listing-file-modified-sort="1726741578076" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="867">
-<div class="thumbnail">
-<p><a href="./build_posts/quarto_blog_build/index.html" class="no-external"></a></p><a href="./build_posts/quarto_blog_build/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./build_posts/quarto_blog_build/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external">How I Built This Quarto Notes Site</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Builds'); return false;">
-Builds
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Notes'); return false;">
-Notes
-</div>
-</div>
-<div class="listing-description">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external">This note describes how I set up and hosted this quarto notes site on the notes.x subdomain of my domain livingphysics.org. To do this I run quarto locally in Visual Studio…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external">
-<div class="listing-date">
-Sep 19, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Builds,Bioreactor" data-listing-date-sort="1726614000000" data-listing-file-modified-sort="1726737785728" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1282">
-<div class="thumbnail">
-<p><a href="./build_posts/gen1_reactor_build/index.html" class="no-external"></a></p><a href="./build_posts/gen1_reactor_build/index.html" class="no-external">
-<p><img src="./build_posts/gen1_reactor_build/images/bioreactor.png" class="thumbnail-image"></p>
-</a><p><a href="./build_posts/gen1_reactor_build/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external">First Generation Bioreactor Build Note</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Builds'); return false;">
-Builds
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Bioreactor'); return false;">
-Bioreactor
-</div>
-</div>
-<div class="listing-description">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external">This note describes the design and construction of a RaspberryPi based 4-bioreactor system that has external illumination, external temperature recording, and magnetic…<span class="math inline"></span><span class="math inline"></span><span class="citation" data-cites="De_Jesus_Astacio2021-ld"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external">
-<div class="listing-date">
-Sep 18, 2024
-</div>
-<div class="listing-author">
-David Jordan, Michele Cespa
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="News" data-listing-date-sort="1726268400000" data-listing-file-modified-sort="1726662470193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="412">
-<div class="thumbnail">
-<p><a href="./notes/sailing/index.html" class="no-external"></a></p><a href="./notes/sailing/index.html" class="no-external">
-<p><img src="./notes/sailing/boats.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./notes/sailing/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notes/sailing/index.html" class="no-external">Sailing Away</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./notes/sailing/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('News'); return false;">
-News
-</div>
-</div>
-<div class="listing-description">
-<a href="./notes/sailing/index.html" class="no-external">Recently I have started an independent research lab outside of (but adjacent to) academia. Upon hearing this, many people have commented: “that sounds like a lot of work”.…<em></em></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./notes/sailing/index.html" class="no-external">
-<div class="listing-date">
-Sep 14, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="News" data-listing-date-sort="1723590000000" data-listing-file-modified-sort="1726662478370" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="33">
-<div class="thumbnail">
-<p><a href="./concept_posts/welcome/index.html" class="no-external"></a></p><a href="./concept_posts/welcome/index.html" class="no-external">
-<p class="card-img-top"><img src="concept_posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./concept_posts/welcome/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./concept_posts/welcome/index.html" class="no-external">Welcome To Concepts</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./concept_posts/welcome/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('News'); return false;">
-News
-</div>
-</div>
-<div class="listing-description">
-<a href="./concept_posts/welcome/index.html" class="no-external">This is the first build post in a Quarto blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./concept_posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Aug 14, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

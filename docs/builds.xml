@@ -10,7 +10,90 @@
 <atom:link href="https://notes.livingphysics.org/builds.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from the living physics Lab</description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Tue, 17 Sep 2024 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 18 Sep 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>How I Built This Quarto Notes Site</title>
+  <dc:creator>David Jordan</dc:creator>
+  <link>https://notes.livingphysics.org/build_posts/quarto_blog_build/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This note describes how I set up and hosted this quarto notes site on the notes.x subdomain of my domain <a href="https://www.livingphysics.org">livingphysics.org</a>. To do this I run quarto locally in <a href="https://code.visualstudio.com">Visual Studio Code</a> and serve the site using a <a href="https://www.digitalocean.com">DigitalOcean</a> app with a custom domain that is managed by SquareSpace. As of this writing (September ’24) Digital Ocean allows you to create 3 free apps.</p>
+<p><a href="quarto.org">Quarto</a> is a</p>
+<blockquote class="blockquote">
+<p>An open-source scientific and technical publishing system</p>
+</blockquote>
+<p>based on markdown that allows for equations and code to be easily embedded into posts. This <a href="https://quarto.org/docs/guide/">guide</a> provides an excellent overview of setting up a quarto notes site and how to author individual posts as well as the basics of markdown and . I referred to this to set up the website, the different notes sections, the main index, and the RSS feed. This site is separately hosted from the my main website, which I wrote mostly in html and is hosted on github pages with a custom domain.</p>
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>I like quarto because you can embed both math equations and code directly into posts, and turn this into a static website very quickly, reducing the time between writing and publishing. I also enjoy <a href="https://obsidian.md">Obsidian</a> a lot for personal notes, but found myself having to generate figures separately which slowed the online publishing process. I also began using Julia extensively so this eased the transition as I could generate figures this way instead of in Matlab.</p>
+<section id="guide" class="level2">
+<h2 class="anchored" data-anchor-id="guide">Guide</h2>
+<section id="setting-up-my-local-environment" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-my-local-environment">Setting up my local environment</h3>
+<ol type="1">
+<li><p>First I installed <a href="https://code.visualstudio.com">Visual Studio Code</a> and added the <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">Quarto</a>, <a href="https://marketplace.visualstudio.com/items?itemName=julialang.language-julia">Julia</a>, <a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a>, and the <a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-scientific-terms">Scientific Terms</a> extensions via the extensions sidebar in the left panel. The code spell checker extension allows for mistake highlighting in VS code, and the shortcut for making a correction is to click on the underlined word and press Command + Perion(.) on my Mac.</p></li>
+<li><p>I render the website locally using the <code>quarto render</code> command and the files are built into the <code>docs</code> subdirectory as the following code is in the <code>_quarto.yml</code> file in the <code>quarto_notes</code> directory.</p></li>
+</ol>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">project</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb1-2"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">type</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> website</span></span>
+<span id="cb1-3"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">output-dir</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> docs</span></span></code></pre></div>
+<ol start="3" type="1">
+<li>The <code>quarto_notes</code> directory is a git repository that is synced to a public github repository. I created this using the github desktop client. This is convenient because after rendering, it is simple to <code>git commit</code> and <code>git push</code> the changes to your public repository. Downstream, the app will be configured to rebuild you site after a new commit is pushed. The repository can be found <a href="https://github.com/davex0r/quarto_notes">here</a>. This has a few benefits:</li>
+</ol>
+<ul>
+<li>as it is a public repository, others can view the source code for the site directly which can help them replicate parts of the site</li>
+<li>there is robust version control and version history, which allows changes to posts to be tracked over time. This provides a record of revisions</li>
+<li>comments and issues (both technological and scientific) can be opened using the <a href="https://github.com/davex0r/quarto_notes/issues">GitHub issues</a> feature.</li>
+</ul>
+<p>Eventually, I would like to integrate a commenting system as well, but as this site is currently served as a static site, it likely requires an upgrade to a paid Digital Ocean app.</p>
+</section>
+<section id="setting-up-the-remote-environment." class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-the-remote-environment.">Setting up the remote environment.</h3>
+<p>I referred to <a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-static-website-to-the-cloud-with-digitalocean-app-platform">this guide</a> provided by Digital Ocean no how to set up a static site app. The guide was simple and worked flawlessly so I will only describe below how I got my app to point to my custom subdomain. Digital ocean also provides a very good <a href="https://docs.digitalocean.com/products/app-platform/how-to/manage-domains/">guide</a> for this.</p>
+<ol type="1">
+<li><p>You will need to purchase or otherwise obtain a domain name. My domains are managed by squarespace domains, and were inherited here from google domains. If you are choosing a domain provider and want to use the Obsidian publish feature with your domain as well, I suggest using <a href="https://help.obsidian.md/Obsidian+Publish/Set+up+a+custom+domain">cloudfare</a>.</p></li>
+<li><p>On the Digital Ocean app dashboard for your site, in the top left there is a button that says Actions. If you click this one action is manage domains. You can also get here by clicking the setting tab and scrolling down to Domains. Here you will find the IP address for your app, mine looks like <em>app_ip_address.ondigitalocean.app</em>. You will need this for the CNAME record in the next step. Here you will also see a button called Add Domain. Click it and add the subdomain you want to point to your app. Mine is <em>notes.livingphysics.org</em>.</p></li>
+<li><p>On the squarespace domain management site, there is a sidebar option called DNS and a sub option called DNS Settings. Here you can add custom records. I added a CNAME record as shown below. Digital Ocean provides a guide for this in general <a href="https://docs.digitalocean.com/products/networking/dns/how-to/manage-records/">here</a>.</p></li>
+</ol>
+<pre><code>Host    Type    Priority    Data
+notes   CNAME   ---         app_ip_address.ondigitalocean.app</code></pre>
+<p>That should be everything you need to get up and running with your site. As always with these things, there is probably a ton of latent knowledge I have neglected to share, so don’t hesitate to reach out with questions and I will periodically provide updates to this post for parts tat are unclear.</p>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>Builds</category>
+  <category>Notes</category>
+  <guid>https://notes.livingphysics.org/build_posts/quarto_blog_build/</guid>
+  <pubDate>Wed, 18 Sep 2024 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>First Generation Bioreactor Build Note</title>
   <dc:creator>David Jordan</dc:creator>

@@ -22,7 +22,7 @@
 
 
 <p>This note describes how I set up and hosted this quarto notes site on the notes.x subdomain of my domain <a href="https://www.livingphysics.org">livingphysics.org</a>. To do this I run quarto locally in <a href="https://code.visualstudio.com">Visual Studio Code</a> and serve the site using a <a href="https://www.digitalocean.com">DigitalOcean</a> app with a custom domain that is managed by SquareSpace. As of this writing (September ’24) Digital Ocean allows you to create 3 free apps.</p>
-<p><a href="quarto.org">Quarto</a> is a</p>
+<p><a href="https://www.quarto.org">Quarto</a> is a</p>
 <blockquote class="blockquote">
 <p>An open-source scientific and technical publishing system</p>
 </blockquote>

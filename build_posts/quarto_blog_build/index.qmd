@@ -13,7 +13,7 @@ feed:
 ---
 This note describes how I set up and hosted this quarto notes site on the notes.x subdomain of my domain [livingphysics.org](https://www.livingphysics.org).  To do this I run quarto locally in [Visual Studio Code](https://code.visualstudio.com) and serve the site using a [DigitalOcean](https://www.digitalocean.com) app with a custom domain that is managed by SquareSpace.  As of this writing (September '24) Digital Ocean allows you to create 3 free apps.  
 
-[Quarto](quarto.org) is a 
+[Quarto](https://www.quarto.org) is a 
 
 > An open-source scientific and technical publishing system
 

@@ -177,6 +177,16 @@ notes   CNAME   ---         app_ip_address.ondigitalocean.app</code></pre>
 <section id="conclusions-and-future-notes" class="level1">
 <h1>Conclusions and Future Notes</h1>
 <p>In the future, a more detailed guide to the construction will be uploaded, along with photos and step-by-step instructions. In the meantime, if you have need any assistance in construction please feel free to e-mail me or to open an issue in the git repository.</p>
+</section>
+<section id="addendum-waterproofing" class="level1">
+<h1>Addendum: Waterproofing</h1>
+<p>I had a brief sensor failure ona BME sensor which I believe to have been caused by condensation forming on the sensor. In previous runs, the humidity has risen from <img src="https://latex.codecogs.com/png.latex?50%5C%25"> to about <img src="https://latex.codecogs.com/png.latex?95%5C%25"> over the course of the 48 hour experiment, but on this day, the humidity started at around <img src="https://latex.codecogs.com/png.latex?100%5C%25"> due to the foam plug between the sample and sensors being a bit damp. First I will ensure this is not the case in the future, but it did highlight that for increased robustness it makes sense to protect the electronics around the BME280 sensors. I referred to <a href="https://thecavepearlproject.org/2023/03/17/waterproofing-your-electronics-project/">The Cave Pearl Project</a> site a lot when deciding how to go about sealing the electronics. In this case, I have pre-coated the board with 2 layers of clear coat nail polish, and then covered the metal pins where I soldered the header in with <a href="https://www.amazon.co.uk/Araldite-Standard-Strong-Adhesive-Materials/dp/B0CNV3BQ17">Ardalite</a> epoxy. I then covered this again with <a href="https://www.amazon.co.uk/JB-8237-Weld-Fast-Setting-Reinforced/dp/B003S2E4UE">PlasticWeld</a> and used some more to affix an <a href="https://uk.rs-online.com/web/p/sensor-accessories/8854704">SHT2x</a> Sealing cap over the BME sensor.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen1_reactor_build/images/sealed_bme.png" class="img-fluid figure-img"></p>
+<figcaption>Sealed BME280 Sensor with SHT2 Cap</figcaption>
+</figure>
+</div>
 
 
 

@@ -63,3 +63,8 @@ The basic build connects two H-frames made from a 270mm construction rail with t
 
 # Conclusions and Future Notes
 In the future, a more detailed guide to the construction will be uploaded, along with photos and step-by-step instructions. In the meantime, if you have need any assistance in construction please feel free to e-mail me or to open an issue in the git repository.  
+
+# Addendum: Waterproofing
+I had a brief sensor failure ona BME sensor which I believe to have been caused by condensation forming on the sensor.  In previous runs, the humidity has risen from $50\%$ to about $95\%$ over the course of the 48 hour experiment, but on this day, the humidity started at around $100\%$ due to the foam plug between the sample and sensors being a bit damp.  First I will ensure this is not the case in the future, but it did highlight that for increased robustness it makes sense to protect the electronics around the BME280 sensors. I referred to [The Cave Pearl Project](https://thecavepearlproject.org/2023/03/17/waterproofing-your-electronics-project/) site a lot when deciding how to go about sealing the electronics.  In this case, I have pre-coated the board with 2 layers of clear coat nail polish, and then covered the metal pins where I soldered the header in with [Ardalite](https://www.amazon.co.uk/Araldite-Standard-Strong-Adhesive-Materials/dp/B0CNV3BQ17) epoxy.  I then covered this again with [PlasticWeld](https://www.amazon.co.uk/JB-8237-Weld-Fast-Setting-Reinforced/dp/B003S2E4UE) and used some more to affix an [SHT2x](https://uk.rs-online.com/web/p/sensor-accessories/8854704) Sealing cap over the BME sensor.
+
+![Sealed BME280 Sensor with SHT2 Cap](images/sealed_bme.png)

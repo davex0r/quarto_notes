@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="David Jordan">
+<meta name="dcterms.date" content="2024-06-24">
 
-<title>Notebooks - Technical Notes</title>
+<title>Notebooks - Observable functions and their dynamics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,8 +99,8 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Notebooks" href="tech.xml" data-external="1"></head>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
 <body class="nav-fixed">
 
@@ -138,7 +109,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Notebooks</span>
     </a>
   </div>
@@ -149,23 +120,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Notes Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./tech.html" aria-current="page"> 
+    <a class="nav-link" href="../../tech.html"> 
 <span class="menu-text">Technical Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./builds.html"> 
+    <a class="nav-link" href="../../builds.html"> 
 <span class="menu-text">Build Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./concepts.html"> 
+    <a class="nav-link" href="../../concepts.html"> 
 <span class="menu-text">Concept Notes</span></a>
   </li>  
   <li class="nav-item">
@@ -174,7 +145,7 @@ window.Quarto = {
 <span class="menu-text">Main Site</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text">RSS Feed</span></a>
   </li>  
@@ -188,221 +159,99 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Technical Notes</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Observable functions and their dynamics</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Observable Functions</div>
+                <div class="quarto-category">Projection Operators</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Jordan </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 24, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Dynamical Closure">Dynamical Closure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Gram Matrix">Gram Matrix <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Observable Functions">Observable Functions <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Projection Operators">Projection Operators <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Sloppy Models">Sloppy Models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TAI">TAI <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>In the previous note I concluded with these points about observable functions and projection,</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li><em>Observable functions</em> are sets of functions of underlying state variables.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>These sets can be much smaller than the underlying dynamical system of which they are functions. This leads to <em>concentration of dimension</em> and can be formalized as a projection operator.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Closed observable subspaces are sets of observable functions whose dynamics are (approximately) self determined, that is that they can be expressed as functions of the observables themselves.</li>
+</ol>
+</blockquote>
+<p>At this point I hope you are comfortable with the concentration of dimension via function projection, in this note, I want to explore the expansion of dimension by observable functions. The main reason we would expand dimensionality is that it can make some computations easier, and that it can <em>linearize</em> a non-linear dynamical system. Consider the following example<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math display">\[ \Large \begin{align} \dot{x_1} &amp;= \mu x_2 \\ \dot{x_2} &amp;= \lambda(x_2-x_1^2) \end{align}
+\]</span> This is a 2D non-linear dynamical system because of the <span class="math inline">\(x_1^2\)</span> term. Lets propose a set of observable functions <span class="math inline">\(y_i\)</span> with the goal of linearizing the system.</p>
+<p><span class="math display">\[ \begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix} = \begin{bmatrix} x_1\\x_2\\x_1^2\end{bmatrix} \]</span> Now lets look at the dynamics of <span class="math inline">\(y\)</span></p>
+<p><span class="math display">\[ \Large \begin{align} \dot{y_1} &amp;= \mu x_2 = \mu y_2 \\ \dot{y_2} &amp;= \lambda(x_2-x_1^2) = \lambda(y_2-y_3)\\ \dot{y_3} &amp;= 2x_1\dot{x_1}\\ &amp;= 2y_1(\mu y_1) \\ &amp;=2\mu y_3 \end{align}
+\]</span></p>
+<p>giving, <span class="math display">\[\large \frac{d}{dt}\begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix}=\begin{bmatrix} 0&amp;\mu&amp;0 \\ 0 &amp; \lambda &amp; -\lambda \\ 0 &amp; 0 &amp; 2\mu\end{bmatrix} \begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix}\]</span> The observable functions for this particular system also have the closure property I mentioned in the last note. We have expanded the dimensionality of the system, but the new system of observable functions has dynamics which are only functions the the <span class="math inline">\(y_i\)</span> themselves. This need not be the case. For example, lets look at the example of the following 1D nonlinear dynamics. <span class="math display">\[\Large \dot{x_1} = -\nu x_1^2 + (\lambda-\nu)x_1 + \lambda\]</span> If we try the same trick here, <span class="math display">\[ \begin{bmatrix} y_1\\y_2\end{bmatrix} = \begin{bmatrix} x_1\\x_1^2\end{bmatrix} \]</span></p>
+<p>We have <span class="math display">\[ \]</span> <span class="math display">\[\Large \begin{align} \dot{y_1} &amp;= \dot{x_1} = -\nu y_2 + (\lambda-\nu)y_1 + \lambda \\ \dot{y_2} &amp;= 2x_1\dot{x_1} = 2y_1(-\nu y_2 + (\lambda-\nu)y_1 + \lambda)\\ &amp;= -2\nu y_1y_2+2(\lambda-\nu)y_y+2\lambda y_1 \\ \end{align}\]</span> Unfortunately here we see a problem, <span class="math inline">\(y_1y_2\)</span> is not a linear function of our set of observables. <span class="math inline">\(y_1y_2 = x_1^3\)</span>, so we would need to add this to our observable functions, <span class="math display">\[ \begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix} = \begin{bmatrix} x_1\\x_1^2\\x_1^3\end{bmatrix} \]</span> with <span class="math display">\[ \Large \begin{align} \dot{y_3} &amp;= 3x_1^2\dot{x_1} = 3y_2(-\nu y_2 + (\lambda-\nu)y_1 + \lambda) \\ &amp;= -3\nu y_2^2+3(\lambda-\nu)y_1y_2 +3\lambda y_2 \\ &amp;= -3\nu y_2^2+3(\lambda-\nu)y_3 +3\lambda y_2 \end{align}\]</span> Again we have a term that is not in our current observable set <span class="math inline">\(y_2^2 = x^4\)</span>. We can however continue this process for an infinite number of terms, if we introduce <span class="math inline">\(y_0\)</span> to account for the constant term, we can write these dynamics with a matrix of the form:</p>
+<p><span class="math display">\[\Large \frac{d\vec{y}}{dt} = \begin{bmatrix} 0&amp;0&amp;0&amp;0&amp;0&amp;...&amp;0\\ \lambda &amp; \lambda-\nu &amp; -\nu &amp; 0&amp; 0&amp;... &amp; 0 \\ 0 &amp; 2\lambda &amp; 2(\lambda-\nu) &amp; -2\nu &amp; 0 &amp;...&amp;0 \\ 0 &amp; 0&amp; 3\lambda &amp; 3(\lambda-\nu) &amp; -3\nu &amp;...&amp;0 \\ ...&amp;&amp;&amp;&amp;&amp;&amp;...\end{bmatrix} \vec{y}\]</span> So we have in infinite dimensional linear operator which has the same dynamics as our non-linear system. In fact, we are guaranteed to always be able find such an infinite dimensional linear operator<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Why is this useful though? We have traded non-linear dynamics for infinite dimensional linear dynamics. Other than control theory applications, its not clear why linear dynamics are important, and also, any real control system is finite dimensional. At this point the connection to orthogonality is hopefully emerging. The Laplacian dynamics from our master equation formulation is a linear operator. It is finite dimensional, but we saw in the last note how we can concentration dimension with projection operators. We can do this as well with the infinite dimensional operators like the one above. The Galerkin projection, that is the one that simply ignores most of the dimensions, is easiest, but like the example in the previous note, if the subspace onto which you are projecting is not closed, the dynamics floats off over time. In other words, the projection does not exactly recapitulate the dynamics, but rather is an approximation. Can chemical reaction networks use their Laplacian dynamics as such an approximation? The questions that I will try to answer in the next few notes are</p>
+<ol type="1">
+<li>Can a chemical reaction network can use its dynamics as a finite dimensional linear approximation of an arbitrary dynamical system.</li>
+<li>If so, what are the “natural basis functions” of Laplacian dynamics</li>
+<li>How does a physical system use thermodynamics to perform these operations without a notion of explicitly approximating the non-linear dynamics.</li>
+</ol>
+<p>As a teaser, lets go back to the one dimensional dynamical system that we needed an infinite expansion to represent.<br>
+<span class="math display">\[\Large \dot{x_1} = -\nu x_1^2 + (\lambda-\nu)x_1 + \lambda\]</span> With our naive choice of observable functions, we saw that we needed an infinite dimensional dynamical linear dynamics to represent it in that set of observables. In fact any finite Galerkin projection in that basis is a pretty bad approximation, but what if we are more clever with the basis functions we select. The form of this equation is written in this way for a reason. Lets go back to the simple chemical reaction network from the previous note <span class="math display">\[
+\Large
+\ce{a&lt;=&gt;[{\lambda}][{\nu}]b}
+\]</span> with its linear dynamics <span class="math display">\[\frac{d}{dt}\begin{bmatrix}a\\b\end{bmatrix} = \begin{bmatrix}-\lambda &amp; \nu \\ \lambda &amp; -\nu\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}\]</span> If I choose an observable function of this dynamics to be the ratio of the two species <span class="math display">\[\Large x_1 = \frac{b}{a}\]</span> then the dynamics of <span class="math inline">\(x_1\)</span> are given by <span class="math display">\[\Large \begin{align} \dot{x_1} &amp;= \frac{\dot{b}a-\dot{a}b}{a^2} \\ &amp;= \frac{(\lambda a-\nu b)a - (-\lambda a + \nu b)b}{a^2} \\ &amp;= \frac{\lambda a^2 - \nu a b +\lambda a b -\nu b^2}{a^2} \\ &amp;= -\nu\frac{b^2}{a^2}+(\lambda-\nu)\frac{ab}{a^2}+\lambda\frac{a^2}{a^2}\\&amp;= -\nu x_1^2+(\lambda-\nu)x_1+\lambda \end{align}\]</span> So it turns out that the dynamics of this non-linear system can in fact be recapitulated by a closed linear system, generated by a Laplacian chemical reaction network. If our observable function is the ratio of two species.</p>
+<p>At this point I hope you feel comfortable. 1) Reducing dimensionality with projection operators. Sometimes this projection can be exactly preserving for closed, invariant subspaces. Otherwise its an approximation 2) Expanding dimensionality through the use of observable functions. Sometimes we need to expand infinitely to get linear dynamics. But linear dynamics may not be the appropriate end goal. Ultimately I’m interested in observable dynamics that can be recapitulated with observables realizable by chemical reaction networks. These may be linear, Linearity is nice for our Laplacian dynamics, but even these are approximations based on time scale separation<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 3) Although I didn’t explain it in detail in the last note (I will in a companion note) The transformation I used to find a closed projection was based on the eigen-decomposition of the linear dynamics given by <span class="math inline">\(\frac{d}{dt}\begin{bmatrix}a\\b\end{bmatrix} = \begin{bmatrix}-\lambda &amp; \nu \\ \lambda &amp; -\nu\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}\)</span>. This is another nice property of linearized dynamics, we can find eigenfunctions which have characteristic time scales and which are uncoupled (if this is unclear stay tuned for the next note). These eigen-decompositions as dimension preserving rotations of the dynamics.</p>
+<p>So now we can take dynamical systems, expand their dimensionality, contract their dimensionality, and rotate their representations at will. The math here is not new or that difficult, but the new part (I hope) will be in seeing how chemical reaction networks can do this using only <em>local</em> information in a self organized way.</p>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TAI" data-listing-date-sort="1721084400000" data-listing-file-modified-sort="1730981951547" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1080">
-<div class="thumbnail">
-<p><a href="./tech_posts/TAI/TAI.html" class="no-external"></a></p><a href="./tech_posts/TAI/TAI.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/TAI/TAI.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">TAI Note</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/TAI/TAI.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TAI'); return false;">
-TAI
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">This note concerns the use of data transformations in calculations of the <strong>Transcriptome Age Index</strong> or TAI. Here I argue that the TAI, when calculated as an expression…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">
-<div class="listing-date">
-Jul 16, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Observable Functions,Projection Operators" data-listing-date-sort="1719183600000" data-listing-file-modified-sort="1731069491062" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1296">
-<div class="thumbnail">
-<p><a href="./tech_posts/observable__dynamics/observable__dynamics.html" class="no-external"></a></p><a href="./tech_posts/observable__dynamics/observable__dynamics.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/observable__dynamics/observable__dynamics.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/observable__dynamics/observable__dynamics.html" class="no-external">Observable functions and their dynamics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/observable__dynamics/observable__dynamics.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Observable Functions'); return false;">
-Observable Functions
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Projection Operators'); return false;">
-Projection Operators
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/observable__dynamics/observable__dynamics.html" class="no-external">In the previous note I concluded with these points about observable functions and projection,</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/observable__dynamics/observable__dynamics.html" class="no-external">
-<div class="listing-date">
-Jun 24, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Projection Operators,Dynamical Closure" data-listing-date-sort="1718665200000" data-listing-file-modified-sort="1731067852461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1919">
-<div class="thumbnail">
-<p><a href="./tech_posts/proj_operator/proj_operator.html" class="no-external"></a></p><a href="./tech_posts/proj_operator/proj_operator.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/proj_operator/proj_operator.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/proj_operator/proj_operator.html" class="no-external">Introduction and Motivations for a Projection Operator Approach</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/proj_operator/proj_operator.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Projection Operators'); return false;">
-Projection Operators
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Dynamical Closure'); return false;">
-Dynamical Closure
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/proj_operator/proj_operator.html" class="no-external">This note introduces projection operators and their use in studying partially observed dynamical systems. The concept of dynamical closure is introduced, which is equivalent…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/proj_operator/proj_operator.html" class="no-external">
-<div class="listing-date">
-Jun 18, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Gram Matrix,Projection Operators" data-listing-date-sort="1715554800000" data-listing-file-modified-sort="1730981964881" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538">
-<div class="thumbnail">
-<p><a href="./tech_posts/gram_projection/gram_projection.html" class="no-external"></a></p><a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/gram_projection/gram_projection.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">Projection in terms of the Gram Matrix</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Gram Matrix'); return false;">
-Gram Matrix
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Projection Operators'); return false;">
-Projection Operators
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">This is a quick note showing how the optimal projection can be derived in terms of the inversion of the gram matrix used in the note on the connection between sloppiness and…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">
-<div class="listing-date">
-May 13, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Sloppy Models,Projection Operators" data-listing-date-sort="1715554800000" data-listing-file-modified-sort="1731059983042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1403">
-<div class="thumbnail">
-<p><a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external"></a></p><a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">An interesting connection between sloppy model analysis and projection operators</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Sloppy Models'); return false;">
-Sloppy Models
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Projection Operators'); return false;">
-Projection Operators
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">This note concerns various ways I have been thinking about basis functions with connections between some other fields I have been interested in, namely, projection…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">
-<div class="listing-date">
-May 13, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Brunton SL, Brunton BW, Proctor JL &amp; Kutz JN (2016) Koopman Invariant Subspaces and Finite Linear Representations of Nonlinear Dynamical Systems for Control.&nbsp;<em>PLoS One</em>&nbsp;11: e0150171<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Koopman BO (1931) Hamiltonian Systems and Transformation in Hilbert Space.&nbsp;<em>Proc Natl Acad Sci U S A</em>&nbsp;17: 315–318<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Mirzaev I &amp; Gunawardena J (2013) Laplacian dynamics on general graphs.&nbsp;<em>Bull Math Biol</em>&nbsp;75: 2118–2149<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

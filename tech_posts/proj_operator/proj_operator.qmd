@@ -1,0 +1,13 @@
+---
+title: "Introduction and Motivations for a Projection Operator Approach"
+code-fold: true
+jupyter: julia-1.11
+author: "David Jordan"
+date: "2024-11-07"
+categories: ["Projection Operators", "Dynamical Closure"]
+draft: true
+---
+This note introduces projection operators and their use in studying partially observed dynamical systems.  The concept of dynamical closure is introduced, which is equivalent to dynamics living on a "Koopman invariant subspace". The best introduction to this I feel is Chapter 8 of Zwanzig's Nonequilibrium Statistical Mechanics. I will do my best to reintroduce the important points in summary below. 
+
+The basic premise of the projection operator approach begins with a complex, high dimensional dynamical system. In statistical mechanics this is often taken to be Hamilton's equations of motion (so-called Hamiltonian Dynamics) for a large number of particles.  The take home message of this section is that the projection operator framework provides a rigorous mathematical derivation, given some important and carefully chosen assumptions, of how to ignore almost all of the order $10^{23}$ degrees of freedom in such a system and find dynamics of *effective variables* that satisfy some useful properties, the most useful of which is closure.  Closure is the ideal that the dynamics of the effective variables can be written only in terms of the effective variables themselves.  To make this a bit more concrete think of the concentration observable function.  We know we can write the diffusion equation as:
+$$\frac{dC(x,t)}{dt} = D\nabla^2C(x,t)$$

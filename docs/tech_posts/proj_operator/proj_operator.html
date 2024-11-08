@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="David Jordan">
+<meta name="dcterms.date" content="2024-11-07">
 
-<title>Notebooks - Living Physics Lab Notes</title>
+<title>Notebooks - Introduction and Motivations for a Projection Operator Approach</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,8 +99,8 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Notebooks" href="index.xml" data-external="1"></head>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
 <body class="nav-fixed">
 
@@ -138,7 +109,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Notebooks</span>
     </a>
   </div>
@@ -149,23 +120,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Notes Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./tech.html"> 
+    <a class="nav-link" href="../../tech.html"> 
 <span class="menu-text">Technical Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./builds.html"> 
+    <a class="nav-link" href="../../builds.html"> 
 <span class="menu-text">Build Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./concepts.html"> 
+    <a class="nav-link" href="../../concepts.html"> 
 <span class="menu-text">Concept Notes</span></a>
   </li>  
   <li class="nav-item">
@@ -174,7 +145,7 @@ window.Quarto = {
 <span class="menu-text">Main Site</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text">RSS Feed</span></a>
   </li>  
@@ -188,289 +159,55 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Living Physics Lab Notes</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction and Motivations for a Projection Operator Approach</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Projection Operators</div>
+                <div class="quarto-category">Dynamical Closure</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Jordan </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 7, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Bioreactor">Bioreactor <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Builds">Builds <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Gram Matrix">Gram Matrix <span class="quarto-category-count">(1)</span></div><div class="category" data-category="News">News <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Notes">Notes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Projection Operators">Projection Operators <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Sloppy Models">Sloppy Models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TAI">TAI <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<p>This note introduces projection operators and their use in studying partially observed dynamical systems. The concept of dynamical closure is introduced, which is equivalent to dynamics living on a “Koopman invariant subspace”. The best introduction to this I feel is Chapter 8 of Zwanzig’s Nonequilibrium Statistical Mechanics. I will do my best to reintroduce the important points in summary below.</p>
+<p>The basic premise of the projection operator approach begins with a complex, high dimensional dynamical system. In statistical mechanics this is often taken to be Hamilton’s equations of motion (so-called Hamiltonian Dynamics) for a large number of particles. The take home message of this section is that the projection operator framework provides a rigorous mathematical derivation, given some important and carefully chosen assumptions, of how to ignore almost all of the order <span class="math inline">\(10^{23}\)</span> degrees of freedom in such a system and find dynamics of <em>effective variables</em> that satisfy some useful properties, the most useful of which is closure. Closure is the ideal that the dynamics of the effective variables can be written only in terms of the effective variables themselves. To make this a bit more concrete think of the concentration observable function. We know we can write the diffusion equation as: <span class="math display">\[\frac{dC(x,t)}{dt} = D\nabla^2C(x,t)\]</span></p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Builds,Notes" data-listing-date-sort="1726700400000" data-listing-file-modified-sort="1726754256986" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="915">
-<div class="thumbnail">
-<p><a href="./build_posts/quarto_blog_build/index.html" class="no-external"></a></p><a href="./build_posts/quarto_blog_build/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./build_posts/quarto_blog_build/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external">How I Built This Quarto Notes Site</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Builds'); return false;">
-Builds
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Notes'); return false;">
-Notes
-</div>
-</div>
-<div class="listing-description">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external">This note describes how I set up and hosted this quarto notes site on the notes.x subdomain of my domain livingphysics.org. To do this I run quarto locally in Visual Studio…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./build_posts/quarto_blog_build/index.html" class="no-external">
-<div class="listing-date">
-Sep 19, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Builds,Bioreactor" data-listing-date-sort="1726614000000" data-listing-file-modified-sort="1727688060308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1460">
-<div class="thumbnail">
-<p><a href="./build_posts/gen1_reactor_build/index.html" class="no-external"></a></p><a href="./build_posts/gen1_reactor_build/index.html" class="no-external">
-<p><img src="./build_posts/gen1_reactor_build/images/bioreactor.png" class="thumbnail-image"></p>
-</a><p><a href="./build_posts/gen1_reactor_build/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external">First Generation Bioreactor Build Note</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Builds'); return false;">
-Builds
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Bioreactor'); return false;">
-Bioreactor
-</div>
-</div>
-<div class="listing-description">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external">This note describes the design and construction of a RaspberryPi based 4-bioreactor system that has external illumination, external temperature recording, and magnetic…<span class="math inline"></span><span class="math inline"></span><span class="citation" data-cites="De_Jesus_Astacio2021-ld"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./build_posts/gen1_reactor_build/index.html" class="no-external">
-<div class="listing-date">
-Sep 18, 2024
-</div>
-<div class="listing-author">
-David Jordan, Michele Cespa
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="News" data-listing-date-sort="1726268400000" data-listing-file-modified-sort="1726662470193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="412">
-<div class="thumbnail">
-<p><a href="./notes/sailing/index.html" class="no-external"></a></p><a href="./notes/sailing/index.html" class="no-external">
-<p><img src="./notes/sailing/boats.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./notes/sailing/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notes/sailing/index.html" class="no-external">Sailing Away</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./notes/sailing/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('News'); return false;">
-News
-</div>
-</div>
-<div class="listing-description">
-<a href="./notes/sailing/index.html" class="no-external">Recently I have started an independent research lab outside of (but adjacent to) academia. Upon hearing this, many people have commented: “that sounds like a lot of work”.…<em></em></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./notes/sailing/index.html" class="no-external">
-<div class="listing-date">
-Sep 14, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="News" data-listing-date-sort="1723590000000" data-listing-file-modified-sort="1726662478370" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="33">
-<div class="thumbnail">
-<p><a href="./concept_posts/welcome/index.html" class="no-external"></a></p><a href="./concept_posts/welcome/index.html" class="no-external">
-<p class="card-img-top"><img src="concept_posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./concept_posts/welcome/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./concept_posts/welcome/index.html" class="no-external">Welcome To Concepts</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./concept_posts/welcome/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('News'); return false;">
-News
-</div>
-</div>
-<div class="listing-description">
-<a href="./concept_posts/welcome/index.html" class="no-external">This is the first build post in a Quarto blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./concept_posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Aug 14, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="TAI" data-listing-date-sort="1721084400000" data-listing-file-modified-sort="1730981951547" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1080">
-<div class="thumbnail">
-<p><a href="./tech_posts/TAI/TAI.html" class="no-external"></a></p><a href="./tech_posts/TAI/TAI.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/TAI/TAI.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">TAI Note</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/TAI/TAI.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TAI'); return false;">
-TAI
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">This note concerns the use of data transformations in calculations of the <strong>Transcriptome Age Index</strong> or TAI. Here I argue that the TAI, when calculated as an expression…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/TAI/TAI.html" class="no-external">
-<div class="listing-date">
-Jul 16, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Gram Matrix,Projection Operators" data-listing-date-sort="1715554800000" data-listing-file-modified-sort="1730981964881" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538">
-<div class="thumbnail">
-<p><a href="./tech_posts/gram_projection/gram_projection.html" class="no-external"></a></p><a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/gram_projection/gram_projection.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">Projection in terms of the Gram Matrix</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Gram Matrix'); return false;">
-Gram Matrix
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Projection Operators'); return false;">
-Projection Operators
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">This is a quick note showing how the optimal projection can be derived in terms of the inversion of the gram matrix used in the note on the connection between sloppiness and…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/gram_projection/gram_projection.html" class="no-external">
-<div class="listing-date">
-May 13, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="Sloppy Models,Projection Operators" data-listing-date-sort="1715554800000" data-listing-file-modified-sort="1731057751551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1403">
-<div class="thumbnail">
-<p><a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external"></a></p><a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">An interesting connection between sloppy model analysis and projection operators</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Sloppy Models'); return false;">
-Sloppy Models
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Projection Operators'); return false;">
-Projection Operators
-</div>
-</div>
-<div class="listing-description">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">This note concerns various ways I have been thinking about basis functions with connections between some other fields I have been interested in, namely, projection…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./tech_posts/sloppy_projection/sloppy_projection.html" class="no-external">
-<div class="listing-date">
-May 13, 2024
-</div>
-<div class="listing-author">
-David Jordan
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

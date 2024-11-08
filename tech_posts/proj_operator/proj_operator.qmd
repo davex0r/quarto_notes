@@ -3,11 +3,188 @@ title: "Introduction and Motivations for a Projection Operator Approach"
 code-fold: true
 jupyter: julia-1.11
 author: "David Jordan"
-date: "2024-11-07"
+date: "2024-06-18"
 categories: ["Projection Operators", "Dynamical Closure"]
-draft: true
+draft: false
 ---
 This note introduces projection operators and their use in studying partially observed dynamical systems.  The concept of dynamical closure is introduced, which is equivalent to dynamics living on a "Koopman invariant subspace". The best introduction to this I feel is Chapter 8 of Zwanzig's Nonequilibrium Statistical Mechanics. I will do my best to reintroduce the important points in summary below. 
 
 The basic premise of the projection operator approach begins with a complex, high dimensional dynamical system. In statistical mechanics this is often taken to be Hamilton's equations of motion (so-called Hamiltonian Dynamics) for a large number of particles.  The take home message of this section is that the projection operator framework provides a rigorous mathematical derivation, given some important and carefully chosen assumptions, of how to ignore almost all of the order $10^{23}$ degrees of freedom in such a system and find dynamics of *effective variables* that satisfy some useful properties, the most useful of which is closure.  Closure is the ideal that the dynamics of the effective variables can be written only in terms of the effective variables themselves.  To make this a bit more concrete think of the concentration observable function.  We know we can write the diffusion equation as:
 $$\frac{dC(x,t)}{dt} = D\nabla^2C(x,t)$$
+
+Where the dynamics of the concentration is a function of only the concentration itself.  Concentration is clearly coupled to the positional degrees of freedom of the full dynamical system (which are coupled to the velocity degrees of freedom), but we can ignore all of these with some well chosen assumptions (many of these are convenient assumptions about near equilibrium behavior or about time scale separations that allow appropriate averages to be taken analytically).  
+
+> As an aside these is also a connection here to work I did studying C. elegans behavior (can we find equations of motion for posture that are functions of only posture itself, despite the fact that posture is coupled to many microscopic degrees of freedom (neural dynamics, neuro-muscular dynamics, hormones, neuro-chemical dynamics, etc). It also came up in my thinking about how robustness and flexibility manifest simultaneously in biological systems and its relation to concentration of dimension and fluctuation dissipation like relations in development. The details are reserved for another note [[Canalization and Plasticity]]
+
+Returning to projection operators, recall from my previous note about [An interesting connection between "sloppy model analysis" and projection operators](../sloppy_projection/sloppy_projection.qmd) that function space projection is essentially what we are talking about here, and that Fourier analysis is still the clearest mental model I have of projection.  In this context, if we have a large time scale separation between the fast and slow dynamics of a noisy oscillation, we can project the dynamics onto the slow modes (the signal) and treat the fast modes as noise.  In general, I am not trying to estimate anything myself with projection operators, and I don't know that biological systems are necessarily trying to estimate anything any more than diffusion is trying estimate anything in a purely physical process.  I am more willing to say that 
+
+1)  emergent effective variables exist (because stat mech gives existence proofs)  
+
+2) these effective variables are useful and biological systems take advantage of them (we have many examples of process that use concentrations, e.g. in developmental dynamics) 
+
+3) and this is the most speculative, that networks of biomolecules can organize themselves to generate effective variables and reorganize to find new (and better in some sense) effective variables on which to base their macroscopic dynamics.  
+	- This process of finding new basis functions for expressing dynamics could be related to achieving better estimates of some process that the cell is trying model.  Its not until this level that I imagine "estimation" coming into play
+
+In general, despite evidence that projections may be the best way to understand system dynamics, the underlying systems are too heterogeneous in my opinion to offer an path forward toward rigorous treatments, The case of chemical reaction networks is the exception!  In this system, I think if we restrict ourselves to mass action kinetics (a reasonable restriction based on everything we know about chemistry that nevertheless does not not limit expressivity) we can figure out both what the basis functions are and how the system projects onto them (inspired by our orthogonality work).  To motivate this lets start with the simplest example, a two species chemical reaction.  
+$$
+\Large
+\ce{a<=>[{\lambda}][{\nu}]b}
+$$
+We can write the Laplacian dynamics for this system as 
+$$\frac{dx}{dt} = \begin{bmatrix}-\lambda & \nu \\ \lambda & -\nu\end{bmatrix}x$$
+where $x=\begin{bmatrix}a\\b\end{bmatrix}$.  
+
+This is a two dimensional dynamical system with couple degrees of freedom $a$ and $b$.  Now if we wanted to reduce the dimensionality of the could do a Galerkin projection onto only one of the degrees of freedom and just simply ignore the other, for example for a we would have $\dot{a}=-\lambda a$.  This is dynamics of a only in terms of a, but these dynamics clearly diverge from the true dynamics significantly.  This is probably not a very useful projection
+
+```{julia}
+using Plots
+using LinearAlgebra
+
+# Define parameters
+λ = 0.5
+ν = 1.5
+L = [-λ ν; λ -ν]
+
+# Create initial conditions
+n = 4
+tmp = range(0, 1, length=n)
+x0 = hcat([vcat(tmp[i], 1-tmp[i]) for i in 1:n]...)
+
+# Function to integrate linear system (you'll need to implement this)
+function integrate_linear(x0, L, dt, T)
+    t = 0:dt:T
+    x = zeros(length(x0), length(t))
+    x[:, 1] = x0
+    
+    for i in 2:length(t)
+        x[:, i] = x[:, i-1] + dt * (L * x[:, i-1])
+    end
+    
+    return x, t
+end
+
+# Create plot with dark theme
+theme(:dark)
+plot(background_color=:black, 
+     foreground_color=:white,
+     legend=:topright,
+     xlabel="time",
+     ylabel="[a]",
+     fontfamily="Computer Modern",
+     grid=false)
+
+# Plot true dynamics
+for i in 1:n
+    x, t = integrate_linear(x0[:, i], L, 0.01, 5)
+    plot!(t, x[1, :], linewidth=2, label=i == 1 ? "True Dynamics" : "",color=i)
+end
+
+# Plot projected dynamics
+for i in 1:n
+    t = 0:0.1:5  # Using larger time steps for dashed lines
+    projected = x0[1, i] * exp.(-λ * t)
+    plot!(t, projected, linestyle=:dash, linewidth=2, 
+          label=i == 1 ? "Projected Dynamics" : "", color=i)
+end
+
+# Calculate eigenvectors and transform initial conditions
+F = eigen(L)
+v = F.vectors
+z0 = inv(v) * x0
+
+# Style adjustments
+plot!(framestyle=:box,
+      fontsize=14,
+      margin=5Plots.mm)
+```
+
+Is there a more useful one dimensional projection of this two dimensional system?  What if we measured an *observable* function of $a$ and $b$?.  I will  present such a function here and show how I determined it later.  Assume for now that we first compute an observable of the system and then do a one dimensional projection onto this carefully chosen observable.  The observable function is given as 
+$$\Large c = \frac{-\lambda}{\lambda+\nu}a+\frac{\nu}{\lambda+\nu}b$$
+Lets look at the dynamics of this observable function
+$$\Large \begin{align} \dot{c}  &= \frac{-\lambda}{\lambda+\nu}\dot{a}+\frac{\nu}{\lambda+\nu}\dot{b} \\ &= \frac{-\lambda}{\lambda+\nu}(-\lambda a+\nu b)+\frac{ \nu}{\lambda+\nu}(\lambda a-\nu b) \\ &= \frac{ \lambda^2a}{\lambda+\nu}+\frac{- \lambda \nu b}{\lambda+\nu}+\frac{ \nu \lambda a}{\lambda+\nu} -\frac{ \nu^2 b}{\lambda+\nu} \\ &= (-\lambda-\nu)\left(\frac{- \lambda}{\lambda+\nu}a+\frac{ \nu}{\lambda+\nu}b\right ) \\ &= (-\lambda-\nu)c\end{align}$$
+
+So we have found an observable function that satisfies our closure property! that is, its dynamics, which are determined by the underlying two-dimensional dynamical system, are self-determined.  We do not need knowledge of $a(t)$ and $b(t)$ explicitly to predict or model the dynamics of $c$, only knowledge of $c$ itself.  
+
+```{julia}
+using Plots
+using LinearAlgebra
+
+# Define parameters
+λ = 0.5
+ν = 1.5
+L = [-λ ν; λ -ν]
+
+# Create initial conditions
+n = 4
+tmp = range(0, 1, length=n)
+x0 = hcat([vcat(tmp[i], 1-tmp[i]) for i in 1:n]...)
+
+# Function to integrate linear system (you'll need to implement this)
+function integrate_linear(x0, L, dt, T)
+    t = 0:dt:T
+    x = zeros(length(x0), length(t))
+    x[:, 1] = x0
+    
+    for i in 2:length(t)
+        x[:, i] = x[:, i-1] + dt * (L * x[:, i-1])
+    end
+    
+    return x, t
+end
+
+# Create plot with dark theme
+theme(:dark)
+plot(background_color=:black, 
+     foreground_color=:white,
+     legend=:topright,
+     xlabel="time",
+     ylabel="[a]",
+     fontfamily="Computer Modern",
+     grid=false)
+# Calculate eigenvectors and transform initial conditions
+F = eigen(L)
+v = F.vectors
+z0 = inv(v) * x0
+
+# Plot true dynamics
+for i in 1:n
+    x, t = integrate_linear(x0[:, i], L, 0.01, 5)
+    tmp_data = inv(v)*x;
+    plot!(t,tmp_data[1, :], linewidth=2, label=i == 1 ? "True Dynamics" : "",color=i)
+end
+
+# Plot projected dynamics
+for i in 1:n
+    t = 0:0.5:5  # Using larger time steps for dashed lines
+    projected = hcat(exp.(-(λ + ν) * t), zeros(length(t)))
+    tmp_data = projected * z0[:, i]
+    scatter!(t, tmp_data, 
+            marker=:square,
+            markersize=2,
+            linewidth=3,
+            label=i == 1 ? "Projected Dynamics" : "",
+            color=i)
+end
+
+
+# Style adjustments
+plot!(framestyle=:box,
+      fontsize=14,
+      margin=5Plots.mm)
+```
+
+his is a simplified example but the principle is general.  Sometimes, carefully chosen observable functions allow you to reduce the dimensionality of a dynamical system.  Ideally the dynamics on the lower dimensional observables will be closed, that is they stay on some subspace of the full  Hilbert space. 
+
+The utility of projection may not be obvious when going form 2 to 1 dimensions, but when reducing from thousands of dimensions to a few the implications for controllability and robustness are clearer as the effective dynamics no longer explicitly depend on all the microscopic degrees of freedom.  
+
+At the end of this I hope that you have a very clear idea of three concepts which I will build on later when I make a connection between projection operator theory and our orthogonality work building up to finally describing the connection between orthogonality and the steady state to flux relationship .  
+
+1) *Observable functions* are sets of functions of underlying state variables.  
+
+2) These sets can be much smaller than the underlying dynamical system of which they are functions.  This leads to *concentration of dimension* and can be formalized as a projection operator[^1].
+
+3) Closed observable subspaces are sets of observable functions whose dynamics are (approximately) self determined[^2], that is that they can be expressed as functions of the observables themselves. 
+
+
+[^1]: In the previous note I used the $L_2$ inner product without an explicit measure, however in Stat mech the inner product is taken over the invariant measure.  To know what this measure is often requires that systems are assumed to be near equilibrium.
+[^2]:Ideally these closed sets of observable functions are linear and Markovian, In real cases ,they may be non-linear and non-Markovian. When they are approximately and not completely self-determined, we hope that we can make use of averages and time scale separations to treat the influence of the unobserved degrees of freedom as uncorrelated random noise

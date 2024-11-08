@@ -3,6 +3,7 @@
     "listing": "/tech.html",
     "items": [
       "/tech_posts/TAI/TAI.html",
+      "/tech_posts/proj_operator/proj_operator.html",
       "/tech_posts/gram_projection/gram_projection.html",
       "/tech_posts/sloppy_projection/sloppy_projection.html"
     ]
@@ -15,6 +16,7 @@
       "/notes/sailing/index.html",
       "/concept_posts/welcome/index.html",
       "/tech_posts/TAI/TAI.html",
+      "/tech_posts/proj_operator/proj_operator.html",
       "/tech_posts/gram_projection/gram_projection.html",
       "/tech_posts/sloppy_projection/sloppy_projection.html"
     ]

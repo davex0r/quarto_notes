@@ -9,7 +9,7 @@
 <link>https://notes.livingphysics.org/builds.html</link>
 <atom:link href="https://notes.livingphysics.org/builds.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from the living physics Lab</description>
-<generator>quarto-1.4.553</generator>
+<generator>quarto-1.6.39</generator>
 <lastBuildDate>Wed, 18 Sep 2024 23:00:00 GMT</lastBuildDate>
 <item>
   <title>How I Built This Quarto Notes Site</title>
@@ -42,6 +42,7 @@
 background-color: null;
 font-style: inherit;">project</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">:</span></span>
 <span id="cb1-2"><span class="at" style="color: #657422;
 background-color: null;
@@ -49,6 +50,7 @@ font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">type</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;"> website</span></span>
@@ -58,6 +60,7 @@ font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">output-dir</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;"> docs</span></span></code></pre></div>

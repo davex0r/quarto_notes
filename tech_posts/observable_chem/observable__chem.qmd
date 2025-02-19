@@ -8,12 +8,17 @@ author:
 date: "2025-02-19"
 categories: ["Observable Functions", "Projection Operators"]
 ---
-This is a short note which connects how well chosen changes to the chemical kinetics in a simple system can manifest mathematically as either altering the projections onto a constant set of basis functions, or altering the basis functions while maintaining the projection.
+This is a short note which connects how well chosen changes to the chemical kinetics in a simple system can manifest mathematically as either altering the projections onto a constant set of basis functions, or altering the basis functions while maintaining the projection. This note is intended to provide a very basic foundation for a more sophisticated model of learning and evolution in physical/chemical systems.
+
+Given a simple chemical reaction 
+
 $$
 \Large
 \ce{a<=>[{\lambda}][{\nu}]b}
 $$
+
 Recall from the previous note the simple conversion reaction with dynamics given by: $$\frac{d}{dt}\begin{bmatrix}a\\b\end{bmatrix} = \begin{bmatrix}-\lambda & \nu \\ \lambda & -\nu\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}$$
+
 Some of the formulas I presented without derivation in the previous notes were derived from looking at the  eigen-decomposition of the Laplacian.
 $$\large  L = UDU^{-1} $$
 This gives us the eigenvector matrix $$ U = \begin{bmatrix} \frac{\nu}{\lambda} & -1 \\ 1 & 1 \end{bmatrix}, D = \begin{bmatrix} 0 & 0 \\ 0 & -(\nu+\lambda) \end{bmatrix} $$

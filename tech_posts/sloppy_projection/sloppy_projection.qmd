@@ -45,9 +45,12 @@ Which gives the following results:
 ```{julia}
 #| label: non-linear fit
 #| fig-cap: "Polynomial fits using either Taylor series approximation or the optimal projection"
+#| output: asis
 using Plots
 using QuadGK
+
 t = range(0, 1, length=100)
+
 p = plot(
     xlabel="time", ylabel="y",
     title="y = sin(t)",
@@ -59,8 +62,11 @@ p = plot(
     guidefontcolor=:white,
     tickfontcolor=:white
 )
+
 plot!(p,t,sin.(t),label="sin(t)")
+
 plot!(p,t,sin(0).+cos(0).*t-sin(0)/2.0.*t.^2,label="Taylor series")
+
 t1 = range(0, 1, length=10)
 f1(t) = sin(t) * 1  # This is just sin(t)
 f2(t) = sin(t) * t
@@ -74,8 +80,11 @@ integrals = map(f -> quadgk(f, 0, 1)[1], functions)
 x = [1, 2, 3]  # You can change these values as needed
 V = [1/(i+j-1) for i in 1:3, j in 1:3]
 coeffs = inv(V)*integrals
+
 plot!(p,t1,coeffs[1].+coeffs[2].*t1.+coeffs[3].*t1.^2,marker=(:circle, 5),label="Projection Operator")
+
 plot!(p, xlim=(0.0, 1.1))
+
 display(p)
 ```
 

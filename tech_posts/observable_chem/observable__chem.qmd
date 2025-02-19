@@ -33,11 +33,11 @@ which gives
 $$ \Large
 \begin{align} z_1(t) &= z_1(0) \\ z_2(t) &= z_2(0)e^{-(\nu+\lambda)t}\end{align}
 $$
-Noting that $z_1 = \frac{\lambda}{\lambda+\nu}a+\frac{\lambda}{\lambda+\nu}b$ and $z_2 = \frac{-\lambda}{\lambda+\nu}a+\frac{\nu}{\lambda+\nu}b$, which is how I derived the observable function $c$ in the note [[Introduction and Motivations for a Projection Operator Approach]].  $z_1$ represents the total (probability) mass and $\dot{z_1}=0$ reflects conservation of (probability) mass. 
+Noting that $z_1 = \frac{\lambda}{\lambda+\nu}a+\frac{\lambda}{\lambda+\nu}b$ and $z_2 = \frac{-\lambda}{\lambda+\nu}a+\frac{\nu}{\lambda+\nu}b$, which is how I derived the observable function $c$ in the note [Introduction and Motivations for a Projection Operator Approach](../proj_operator/proj_operator.qmd).  $z_1$ represents the total (probability) mass and $\dot{z_1}=0$ reflects conservation of (probability) mass. 
 
 We've carried out this eigen-decomposition because the natural dynamics of $a$ ad $b$ can be represented as a linear combination of the uncoupled dynamics of $z_1$ and $z_2$.  In the language I have been developing in the last few notes, I would say that $z_1(t)$ and $z_2(t)$ are the basis functions and the dynamics of $a$ and $b$ are projections onto these basis functions.  
 
-It is clear in this simple example that the basis functions are defined by the eigenvalues and the projection is defined by the eigenvectors.  Thus if we change the eigenvalues without changing the eigenvectors we adjust the basis functions ad if we change the eigenvectors while keeping constant eigenvalues we change the projection. 
+It is clear in this simple example that the basis functions are defined by the eigenvalues and the projection is defined by the eigenvectors.  Thus if we change the eigenvalues without changing the eigenvectors we adjust the basis functions and if we change the eigenvectors while keeping constant eigenvalues we change the projection. 
 
 Lets now consider the action of an enzyme which lowers the activation energy barrier for the reaction.  This results in a proportional increase in both $\nu$ and $\lambda$
 $$

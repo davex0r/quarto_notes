@@ -16,14 +16,14 @@ In the previous note I concluded with these points about observable functions an
 
 At this point I hope you are comfortable with the concentration of dimension via function projection, in this note, I want to explore the expansion of dimension by observable functions. The main reason we would expand dimensionality is that it can make some computations easier, and that it can *linearize* a non-linear dynamical system. Consider the following example[^1]
 
-$$ \Large \begin{align} \dot{x_1} &= \mu x_2 \\ \dot{x_2} &= \lambda(x_2-x_1^2) \end{align}
+$$ \Large \begin{align} \dot{x_1} &= \mu x_1 \\ \dot{x_2} &= \lambda(x_2-x_1^2) \end{align}
 $$
 This is a 2D non-linear dynamical system because of the $x_1^2$ term.  Lets propose a set of observable functions $y_i$ with the goal of linearizing the system.
 
 $$ \begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix} = \begin{bmatrix} x_1\\x_2\\x_1^2\end{bmatrix} $$
 Now lets look at the dynamics of $y$
 
-$$ \Large \begin{align} \dot{y_1} &= \mu x_2 = \mu y_2 \\ \dot{y_2} &= \lambda(x_2-x_1^2) = \lambda(y_2-y_3)\\ \dot{y_3} &= 2x_1\dot{x_1}\\ &= 2y_1(\mu y_1) \\ &=2\mu y_3 \end{align}
+$$ \Large \begin{align} \dot{y_1} &= \mu x_1 = \mu y_1 \\ \dot{y_2} &= \lambda(x_2-x_1^2) = \lambda(y_2-y_3)\\ \dot{y_3} &= 2x_1\dot{x_1}\\ &= 2y_1(\mu y_1) \\ &=2\mu y_3 \end{align}
 $$
 
 giving,

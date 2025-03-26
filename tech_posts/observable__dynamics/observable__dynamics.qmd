@@ -27,7 +27,7 @@ $$ \Large \begin{align} \dot{y_1} &= \mu x_1 = \mu y_1 \\ \dot{y_2} &= \lambda(x
 $$
 
 giving,
-$$\large \frac{d}{dt}\begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix}=\begin{bmatrix} 0&\mu&0 \\ 0 & \lambda & -\lambda \\ 0 & 0 & 2\mu\end{bmatrix} \begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix}$$
+$$\large \frac{d}{dt}\begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix}=\begin{bmatrix} \mu&0&0 \\ 0 & \lambda & -\lambda \\ 0 & 0 & 2\mu\end{bmatrix} \begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix}$$
 The observable functions for this particular system also have the closure property I mentioned in the last note.  We have expanded the dimensionality of the system, but the new system of observable functions has dynamics which are only functions the the $y_i$ themselves.  This need not be the case.  For example, lets look at the example of the following 1D nonlinear dynamics. 
 $$\Large \dot{x_1} = -\nu x_1^2 + (\lambda-\nu)x_1 + \lambda$$
 If we try the same trick here, 

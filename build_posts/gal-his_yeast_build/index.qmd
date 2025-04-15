@@ -56,7 +56,7 @@ They then use a fluorescent fusion GAL2p and show that is distribution is not un
 
 For Gal2, W303 is closer to K699 than to YPH499. For the residues noted, K699 has the residues [VPSYR], YPH499 has the residues [MSGSH] and our strain W303 has [VPSSR] according to publicly available [sequencing data](https://www.yeastgenome.org/variant-viewer#/S000004071).
 
-## Transformtion
+## Transformation
 The completed pESC-Leu_Gal-His plasmid was transfected into competent yeast cells using the LiAc procedure [-@itoTransformationIntactYeast1983].  We followed the protocols given in [-@gietzFrozenCompetentYeast2007] for making competent cells, and then transformed them following the high-efficiency procedure in [-@gietzHighefficiencyYeastTransformation2007]. The construct contains a Leucine selectable marker under the control of the native Leu promoter, and the [W303](#w303) strain carries the *leu2-3* allele, therefore only cells successfully transformed will grow on minimal media plates without leucine. Directly after transformation, yeast were grown in recovery media and then plated on selection plates lacking leucine and containing glucose. A mock transformation was also carried out which did not contain any of the plasmid.  The results of plating different volumes of the transformation mixture $(2\mu l, 20\mu l, 200\mu l )$ are shown for both the control ($\emptyset$) and the plasmid (Tx) after 3 days of growth at 30C. 
 
 ![Transformation results Leu- selection plates](images/transformation-leu.jpeg)

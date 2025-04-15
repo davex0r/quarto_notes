@@ -81,8 +81,8 @@
 <p>They then use a fluorescent fusion GAL2p and show that is distribution is not uniform on the cell membrane in YPH499 as it is in another strain K699 which has teh <em>wild-type</em> <em>GAL</em> sequence. The strains I have easily available are the W303 strain and the BY4743 strains. The W303 strain is only 85.4% congenic with S288c (and thus with YPH499)</p>
 <p>For Gal2, W303 is closer to K699 than to YPH499. For the residues noted, K699 has the residues [VPSYR], YPH499 has the residues [MSGSH] and our strain W303 has [VPSSR] according to publicly available <a href="https://www.yeastgenome.org/variant-viewer#/S000004071">sequencing data</a>.</p>
 </section>
-<section id="transformtion" class="level2">
-<h2 class="anchored" data-anchor-id="transformtion">Transformtion</h2>
+<section id="transformation" class="level2">
+<h2 class="anchored" data-anchor-id="transformation">Transformation</h2>
 <p>The completed pESC-Leu_Gal-His plasmid was transfected into competent yeast cells using the LiAc procedure <span class="citation" data-cites="itoTransformationIntactYeast1983">&nbsp;[7]</span>. We followed the protocols given in <span class="citation" data-cites="gietzFrozenCompetentYeast2007">&nbsp;[8]</span> for making competent cells, and then transformed them following the high-efficiency procedure in <span class="citation" data-cites="gietzHighefficiencyYeastTransformation2007">&nbsp;[9]</span>. The construct contains a Leucine selectable marker under the control of the native Leu promoter, and the W303 strain carries the <em>leu2-3</em> allele, therefore only cells successfully transformed will grow on minimal media plates without leucine. Directly after transformation, yeast were grown in recovery media and then plated on selection plates lacking leucine and containing glucose. A mock transformation was also carried out which did not contain any of the plasmid. The results of plating different volumes of the transformation mixture <img src="https://latex.codecogs.com/png.latex?(2%5Cmu%20l,%2020%5Cmu%20l,%20200%5Cmu%20l%20)"> are shown for both the control (<img src="https://latex.codecogs.com/png.latex?%5Cemptyset">) and the plasmid (Tx) after 3 days of growth at 30C.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -199,8 +199,8 @@
 <p>We are working with a derivative of the <a href="https://www.yeastgenome.org/strain/w303">W303</a> strain, which is itself a derivative of the <a href="https://www.yeastgenome.org/strain/S288C">S88C</a> strain. This strain has genotype MATa/MATα <em>{leu2-3,112 trp1-1 can1-100 ura3-1 ade2-1 his3-11,15} [phi+]</em></p>
 </section>
 </section>
-<section id="transformation" class="level3">
-<h3 class="anchored" data-anchor-id="transformation">Transformation</h3>
+<section id="transformation-1" class="level3">
+<h3 class="anchored" data-anchor-id="transformation-1">Transformation</h3>
 <p>Transformation refers to the uptake of external or foreign DNA into a cell. This is usually achieved by disrupting the membrane in some way, such as using chemicals (chemical transformation), large electrical fields (electoporation), or high temperatures (heat shock transformation). Transformation generally involves making Competent cells which are cells prepared in such a way that they more easily take up foreign DNA, and then introducing that foreign DNA into the cells by either chemical, heat-shock, or electroporation. For yeast, a combination of the chemical Lithium Acetate and heat-shock is often used.</p>
 <section id="competent-cells" class="level4">
 <h4 class="anchored" data-anchor-id="competent-cells">Competent Cells</h4>

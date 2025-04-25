@@ -10,7 +10,7 @@
 <atom:link href="https://notes.livingphysics.org/tech.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from the living physics Lab</description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Wed, 19 Feb 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 18 Feb 2025 15:00:00 GMT</lastBuildDate>
 <item>
   <title>Projections and Basis Functions with Chemistry</title>
   <dc:creator>David Jordan</dc:creator>
@@ -43,7 +43,7 @@
   <category>Observable Functions</category>
   <category>Projection Operators</category>
   <guid>https://notes.livingphysics.org/tech_posts/observable_chem/observable__chem.html</guid>
-  <pubDate>Wed, 19 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 18 Feb 2025 15:00:00 GMT</pubDate>
 </item>
 <item>
   <title>TAI Note</title>
@@ -932,7 +932,7 @@ Figure&nbsp;3: 2-Gene Sphere Plot
  ]]></description>
   <category>TAI</category>
   <guid>https://notes.livingphysics.org/tech_posts/TAI/TAI.html</guid>
-  <pubDate>Mon, 15 Jul 2024 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 15:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Observable functions and their dynamics</title>
@@ -992,7 +992,7 @@ Figure&nbsp;3: 2-Gene Sphere Plot
   <category>Observable Functions</category>
   <category>Projection Operators</category>
   <guid>https://notes.livingphysics.org/tech_posts/observable__dynamics/observable__dynamics.html</guid>
-  <pubDate>Sun, 23 Jun 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 23 Jun 2024 15:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Introduction and Motivations for a Projection Operator Approach</title>
@@ -1966,7 +1966,7 @@ font-style: inherit;">5</span>Plots.mm)</span></code></pre></div>
   <category>Projection Operators</category>
   <category>Dynamical Closure</category>
   <guid>https://notes.livingphysics.org/tech_posts/proj_operator/proj_operator.html</guid>
-  <pubDate>Mon, 17 Jun 2024 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 17 Jun 2024 15:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Projection in terms of the Gram Matrix</title>
@@ -1991,7 +1991,7 @@ font-style: inherit;">5</span>Plots.mm)</span></code></pre></div>
   <category>Gram Matrix</category>
   <category>Projection Operators</category>
   <guid>https://notes.livingphysics.org/tech_posts/gram_projection/gram_projection.html</guid>
-  <pubDate>Sun, 12 May 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 15:00:00 GMT</pubDate>
 </item>
 <item>
   <title>An interesting connection between sloppy model analysis and projection operators</title>
@@ -2383,7 +2383,7 @@ font-style: inherit;">display</span>(p)</span></code></pre></div>
   <category>Sloppy Models</category>
   <category>Projection Operators</category>
   <guid>https://notes.livingphysics.org/tech_posts/sloppy_projection/sloppy_projection.html</guid>
-  <pubDate>Sun, 12 May 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 12 May 2024 15:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -10,7 +10,7 @@
 <atom:link href="https://notes.livingphysics.org/concepts.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from the living physics Lab</description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Tue, 13 Aug 2024 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 13 Aug 2024 15:00:00 GMT</lastBuildDate>
 <item>
   <title>Welcome To Concepts</title>
   <dc:creator>David Jordan</dc:creator>
@@ -30,7 +30,7 @@
  ]]></description>
   <category>News</category>
   <guid>https://notes.livingphysics.org/concept_posts/welcome/</guid>
-  <pubDate>Tue, 13 Aug 2024 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 13 Aug 2024 15:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -8,13 +8,12 @@ author:
 code-fold: true
 date: "2025-02-18"
 categories: [Builds, Bioreactor]
-bibliography: ./references.bib
 csl: ../styles/american-physical-society.csl
-draft: true
+draft: false
 ---
 
 # Overview
-This note describes an upgrade to the first generation bioreactor to increase the sensitivity and long-term reliability of the optical density measurements. The optical density measurements are done using a combination of infrared photodiodes.     
+This note describes an upgrade to the first generation bioreactor to increase the sensitivity and long-term reliability of the optical density measurements. The optical density measurements are done using a combination of infrared photodiodes and infrared LEDs.     
 
 # Introduction
 This note will describe the build process in a series of steps which describe the design and construction of the following: 
@@ -23,5 +22,9 @@ This note will describe the build process in a series of steps which describe th
 2. New Transimpedance Amplifier (OP380) based photodiode current amplifier. 
 
 ## 3D Printed LED and Photodiode Sleeve
-One of the major issues with the initial design is that black acrylic sheet is transparent to infrared.  As such, each sheet transmitted and internally reflected much of the output of the infrared LED, leading to different baseline readings for the interior vs exterior reactors in a 4 reactor line. In addition, the previous design allowed some rotation of the diodes and LED which resulted in inconsistencies.  The 3D printed [Pioreactor v1.0 vial holder](https://www.printables.com/model/715199-pioreactor-20ml-v10-printable-parts) solves this problem but was too high for our system, so I trimmed it in Autodesk Fusion to retain a truncated version [(.stl file)](./files/trunc_vial_holder.stl).  First, load the model and then click on the *Mesh* tab.  Create an *Offset Plane* and position it were you want to cut the model (I cut i just above and just below the diode layer).  Finally, use the *Plane Cut* command in the modify section and choose the **fill** option.  
+One of the major issues with the initial design is that black acrylic sheet is transparent to infrared.  As such, each sheet transmitted and internally reflected much of the output of the infrared LED, leading to different baseline readings for the interior vs exterior reactors in a 4 reactor line. In addition, the previous design allowed some rotation of the diodes and LED which resulted in inconsistencies.  The 3D printed [Pioreactor v1.0 vial holder](https://www.printables.com/model/715199-pioreactor-20ml-v10-printable-parts) solves this problem but was too high for our system, so I trimmed it in Autodesk Fusion to retain a truncated version [(.stl file)](./files/trunc_vial_holder.stl).  First, load the model and then click on the *Mesh* tab.  Create an *Offset Plane* and position it were you want to cut the model (I cut i just above and just below the diode l ayer).  Finally, use the *Plane Cut* command in the modify section and choose the **fill** option.  
 
+## Transimpedance Amplifier Circuit
+I have designed and implemented a new current amplifier based on the OP380 Transimpedance amplifier to amplify the photodiode current used to measure the cultures optical density. We have chosen different gains for each set of photodiodes.  The highest gain is achieved with $100M\Omega$ resistors for the IR reference PDs, the $135^{\circ}$ PDs use a $10M\Omega$ resistor and the $180^{\circ}$ PDs use a $360k\Omega$ resistor. The circuit for the transimpedance amplifier is based on the simple amplifier circuit provided in the [OP380 documentation](https://www.ti.com/lit/ds/symlink/opa380.pdf).  
+
+![Transimpedance Amplifier Circuit Diagram. The values for $R_f$ for the 180, 135 and Reference PD amplifiers are $100M\Omega$, $10M\Omega$, and $360K\Omega$ respectively.](images/opa380_amplifier.png)

@@ -10,7 +10,7 @@
 <atom:link href="https://notes.livingphysics.org/builds.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from the living physics Lab</description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Thu, 27 Feb 2025 15:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 28 Feb 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Recreating the Gal-His yeast system used to demonstrate adaptive reprogramming</title>
   <dc:creator>David Jordan</dc:creator>
@@ -175,6 +175,186 @@
 </tbody>
 </table>
 </section>
+<section id="yeast-liquid-culture" class="level3">
+<h3 class="anchored" data-anchor-id="yeast-liquid-culture">Yeast Liquid Culture</h3>
+<section id="ypad" class="level4">
+<h4 class="anchored" data-anchor-id="ypad">YPAD</h4>
+<p>Yeast are easily grown in complex liquid media containing Yeast Extract, Peptone, Adenine, and Dextrose (D-Glucose), commonly abbreviated YPAD. 1x YPAD contains 1% (w/v) Bacto yeast extract, 2% (w/v) Bacto peptone. 2% (w/v) Glucose, and adenine hemisulfate 80 mg/l. For 1l of media, this corresponds to 10g yeast extract, 20g peptone, 20g Glucose, and 80mg adenine. #### Synthetic Dropout Media I am using Yeast Nitrogen Base and Complete Supplement Mixtures (CSM) from <a href="https://formedium.com/complete-supplement-mixture-csm-drop-outs/">Formedium</a>. The recipe for the YNB is as follows:</p>
+<p>Formedium Yeast Nitrogen Base</p>
+<div class="table-container" style="width: 50%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Formula</th>
+<th>mg/L</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Biotin</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Ca-Panthotenate</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td>Folic acid</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Inositol</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>Nicotinic Acid (Niacin)</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>p-Aminobenzoic Acid</td>
+<td>0.2</td>
+</tr>
+<tr class="odd">
+<td>Pyridoxine HCl</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>Riboflavin</td>
+<td>0.2</td>
+</tr>
+<tr class="odd">
+<td>Thiamine HCl</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>Boric Acid</td>
+<td>0.5</td>
+</tr>
+<tr class="odd">
+<td>Copper Sulfate</td>
+<td>0.04</td>
+</tr>
+<tr class="even">
+<td>Potassium Iodide</td>
+<td>0.1</td>
+</tr>
+<tr class="odd">
+<td>Ferric Chloride</td>
+<td>0.2</td>
+</tr>
+<tr class="even">
+<td>Manganese Sulfate</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td>Sodium Molybdate</td>
+<td>0.2</td>
+</tr>
+<tr class="even">
+<td>Zinc Sulfate</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td>Potassium Phosphate, monobasic</td>
+<td>1000</td>
+</tr>
+<tr class="even">
+<td>Magnesium Sulphate, anhydrous</td>
+<td>500</td>
+</tr>
+<tr class="odd">
+<td>Sodium Chloride</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>Calcium Chloride, anhydrous</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>Ammonium Sulphate</td>
+<td>5000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Suspend <strong>6.9 g</strong> powdered medium in <strong>1 L</strong> distilled water.<br>
+Store dry at room temperature.</p>
+<p>The recipe per liter for the YNB from Sigma calls for 6.7g/l and in their work, Braun et al.&nbsp;used 1.7g/l for their plates and liquid media. Thus, we should use (1/7/6.7)*6.9=1.75g/l in our recreated recipe. Braun et al added 5g/l Ammonium Sulfate which corresponds to our YNB.</p>
+<p>For the Complete supplement mixtures, Braun et al.&nbsp;used Sigma <a href="https://www.sigmaaldrich.com/GB/en/product/sigma/y2001">Synthetic dropout medium supplements Y2001</a> with all standard amino acids except for histidine, leucine, tryptophan and uracil. Each amino acid is present at a concentration of 76 mg/L. Other nutrients: Adenine (18 mg/L), inositol (76 mg/L), p-aminobenzoic acid (8 mg/L) and to which they added 0.006 g/liter L-tryptophan, and 0.003 g/liter uracil. Braun et al used the full 1.4g/l called for.</p>
+<div class="table-container" style="width: 50%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Formula</th>
+<th>mg/L</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Adenine</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>L-Arginine</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>L-Aspartic acid</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td>L-Histidine HCl</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>L-Isoleucine</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Leucine</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>L-Lysine HCl</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Methionine</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>L-Phenylalanine</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Threonine</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>L-Tryptophan</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Tyrosine</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>Uracil</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Valine</td>
+<td>140</td>
+</tr>
+<tr class="odd">
+<td><strong>TOTAL</strong></td>
+<td><strong>790</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
 <section id="yeast-plating" class="level3">
 <h3 class="anchored" data-anchor-id="yeast-plating">Yeast Plating</h3>
 <p>Liquid cultures of yeast are diluted and spread on solid media plates in order to facilitate the selection of a colony, which is presumably generated from a single cell. This procedure <em>minimizes</em> genetic variation in the population of cells used to start a new culture, but also bottlenecks the culture (potentially fixing any mutations that have arisen). For this procedure to work, the liquid culture must be sufficiently diluted so that only <img src="https://latex.codecogs.com/png.latex?%5Capprox10%5E1-10%5E2"> cells are spread on each plate. The following will describe how to carry out this procedure.</p>
@@ -263,8 +443,54 @@
   <category>Notes</category>
   <category>Yeast</category>
   <guid>https://notes.livingphysics.org/build_posts/gal-his_yeast_build/</guid>
-  <pubDate>Thu, 27 Feb 2025 15:00:00 GMT</pubDate>
+  <pubDate>Fri, 28 Feb 2025 00:00:00 GMT</pubDate>
   <media:content url="https://notes.livingphysics.org/build_posts/gal-his_yeast_build/images/Project_Image002_ch00.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>First Generation Bioreactor Update</title>
+  <dc:creator>David Jordan</dc:creator>
+  <dc:creator>Somsubhro Bagchi</dc:creator>
+  <link>https://notes.livingphysics.org/build_posts/gen1_reactor_update_01/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>This note describes an upgrade to the first generation bioreactor to increase the sensitivity and long-term reliability of the optical density measurements. The optical density measurements are done using a combination of infrared photodiodes and infrared LEDs.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This note will describe the build process in a series of steps which describe the design and construction of the following:</p>
+<ol type="1">
+<li>Modified 3D printed LED and photodiode guide based on the Pioreactor open source design.</li>
+<li>New Transimpedance Amplifier (OP380) based photodiode current amplifier.</li>
+</ol>
+<section id="d-printed-led-and-photodiode-sleeve" class="level2">
+<h2 class="anchored" data-anchor-id="d-printed-led-and-photodiode-sleeve">3D Printed LED and Photodiode Sleeve</h2>
+<p>One of the major issues with the initial design is that black acrylic sheet is transparent to infrared. As such, each sheet transmitted and internally reflected much of the output of the infrared LED, leading to different baseline readings for the interior vs exterior reactors in a 4 reactor line. In addition, the previous design allowed some rotation of the diodes and LED which resulted in inconsistencies. The 3D printed <a href="https://www.printables.com/model/715199-pioreactor-20ml-v10-printable-parts">Pioreactor v1.0 vial holder</a> solves this problem but was too high for our system, so I trimmed it in Autodesk Fusion to retain a truncated version <a href="./files/trunc_vial_holder.stl">(.stl file)</a>. First, load the model and then click on the <em>Mesh</em> tab. Create an <em>Offset Plane</em> and position it were you want to cut the model (I cut i just above and just below the diode l ayer). Finally, use the <em>Plane Cut</em> command in the modify section and choose the <strong>fill</strong> option.</p>
+</section>
+<section id="transimpedance-amplifier-circuit" class="level2">
+<h2 class="anchored" data-anchor-id="transimpedance-amplifier-circuit">Transimpedance Amplifier Circuit</h2>
+<p>I have designed and implemented a new current amplifier based on the OP380 Transimpedance amplifier to amplify the photodiode current used to measure the cultures optical density. We have chosen different gains for each set of photodiodes. The highest gain is achieved with <img src="https://latex.codecogs.com/png.latex?100M%5COmega"> resistors for the IR reference PDs, the <img src="https://latex.codecogs.com/png.latex?135%5E%7B%5Ccirc%7D"> PDs use a <img src="https://latex.codecogs.com/png.latex?10M%5COmega"> resistor and the <img src="https://latex.codecogs.com/png.latex?180%5E%7B%5Ccirc%7D"> PDs use a <img src="https://latex.codecogs.com/png.latex?360k%5COmega"> resistor. The circuit for the transimpedance amplifier is based on the simple amplifier circuit provided in the <a href="https://www.ti.com/lit/ds/symlink/opa380.pdf">OP380 documentation</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen1_reactor_update_01/images/opa380_amplifier.png" class="img-fluid figure-img"></p>
+<figcaption>Transimpedance Amplifier Circuit Diagram. The values for <img src="https://latex.codecogs.com/png.latex?R_f"> for the 180, 135 and Reference PD amplifiers are <img src="https://latex.codecogs.com/png.latex?100M%5COmega">, <img src="https://latex.codecogs.com/png.latex?10M%5COmega">, and <img src="https://latex.codecogs.com/png.latex?360K%5COmega"> respectively.</figcaption>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Builds</category>
+  <category>Bioreactor</category>
+  <guid>https://notes.livingphysics.org/build_posts/gen1_reactor_update_01/</guid>
+  <pubDate>Tue, 18 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How I Built This Quarto Notes Site</title>
@@ -350,7 +576,7 @@ notes   CNAME   ---         app_ip_address.ondigitalocean.app</code></pre>
   <category>Builds</category>
   <category>Notes</category>
   <guid>https://notes.livingphysics.org/build_posts/quarto_blog_build/</guid>
-  <pubDate>Wed, 18 Sep 2024 15:00:00 GMT</pubDate>
+  <pubDate>Wed, 18 Sep 2024 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>First Generation Bioreactor Build Note</title>
@@ -464,7 +690,7 @@ notes   CNAME   ---         app_ip_address.ondigitalocean.app</code></pre>
   <category>Builds</category>
   <category>Bioreactor</category>
   <guid>https://notes.livingphysics.org/build_posts/gen1_reactor_build/</guid>
-  <pubDate>Tue, 17 Sep 2024 15:00:00 GMT</pubDate>
+  <pubDate>Tue, 17 Sep 2024 23:00:00 GMT</pubDate>
   <media:content url="https://notes.livingphysics.org/build_posts/gen1_reactor_build/images/bioreactor.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 </channel>

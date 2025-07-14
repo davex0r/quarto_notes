@@ -1,13 +1,17 @@
 [
   {
-    "listing": "/tech.html",
+    "listing": "/concepts.html",
     "items": [
-      "/tech_posts/observable_chem/observable__chem.html",
-      "/tech_posts/TAI/TAI.html",
-      "/tech_posts/observable__dynamics/observable__dynamics.html",
-      "/tech_posts/proj_operator/proj_operator.html",
-      "/tech_posts/gram_projection/gram_projection.html",
-      "/tech_posts/sloppy_projection/sloppy_projection.html"
+      "/concept_posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/builds.html",
+    "items": [
+      "/build_posts/gal-his_yeast_build/index.html",
+      "/build_posts/gen1_reactor_update_01/index.html",
+      "/build_posts/quarto_blog_build/index.html",
+      "/build_posts/gen1_reactor_build/index.html"
     ]
   },
   {
@@ -15,6 +19,7 @@
     "items": [
       "/build_posts/gal-his_yeast_build/index.html",
       "/tech_posts/observable_chem/observable__chem.html",
+      "/build_posts/gen1_reactor_update_01/index.html",
       "/build_posts/quarto_blog_build/index.html",
       "/build_posts/gen1_reactor_build/index.html",
       "/notes/sailing/index.html",
@@ -27,17 +32,14 @@
     ]
   },
   {
-    "listing": "/builds.html",
+    "listing": "/tech.html",
     "items": [
-      "/build_posts/gal-his_yeast_build/index.html",
-      "/build_posts/quarto_blog_build/index.html",
-      "/build_posts/gen1_reactor_build/index.html"
-    ]
-  },
-  {
-    "listing": "/concepts.html",
-    "items": [
-      "/concept_posts/welcome/index.html"
+      "/tech_posts/observable_chem/observable__chem.html",
+      "/tech_posts/TAI/TAI.html",
+      "/tech_posts/observable__dynamics/observable__dynamics.html",
+      "/tech_posts/proj_operator/proj_operator.html",
+      "/tech_posts/gram_projection/gram_projection.html",
+      "/tech_posts/sloppy_projection/sloppy_projection.html"
     ]
   }
 ]

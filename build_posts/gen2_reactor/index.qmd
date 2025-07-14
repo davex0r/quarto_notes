@@ -1,0 +1,10 @@
+---
+title: "Second Generation Bioreactor Build Note"
+author: ["David Jordan", "Somsubhro Bagchi"]
+code-fold: true
+date: "2025-05-23"
+categories: [Builds, Bioreactor]
+csl: ../styles/american-physical-society.csl
+draft: true
+---
+# Overview

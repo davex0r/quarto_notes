@@ -238,6 +238,7 @@ window.Quarto = {
   <li><a href="#plasmids" id="toc-plasmids" class="nav-link" data-scroll-target="#plasmids">Plasmids</a></li>
   <li><a href="#restriction-enzymes" id="toc-restriction-enzymes" class="nav-link" data-scroll-target="#restriction-enzymes">Restriction Enzymes</a></li>
   <li><a href="#restriction-pcr" id="toc-restriction-pcr" class="nav-link" data-scroll-target="#restriction-pcr">Restriction PCR</a></li>
+  <li><a href="#yeast-liquid-culture" id="toc-yeast-liquid-culture" class="nav-link" data-scroll-target="#yeast-liquid-culture">Yeast Liquid Culture</a></li>
   <li><a href="#yeast-plating" id="toc-yeast-plating" class="nav-link" data-scroll-target="#yeast-plating">Yeast Plating</a></li>
   <li><a href="#yeast-strains-1" id="toc-yeast-strains-1" class="nav-link" data-scroll-target="#yeast-strains-1">Yeast Strains</a></li>
   <li><a href="#transformation-1" id="toc-transformation-1" class="nav-link" data-scroll-target="#transformation-1">Transformation</a></li>
@@ -406,6 +407,186 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+</section>
+<section id="yeast-liquid-culture" class="level3">
+<h3 class="anchored" data-anchor-id="yeast-liquid-culture">Yeast Liquid Culture</h3>
+<section id="ypad" class="level4">
+<h4 class="anchored" data-anchor-id="ypad">YPAD</h4>
+<p>Yeast are easily grown in complex liquid media containing Yeast Extract, Peptone, Adenine, and Dextrose (D-Glucose), commonly abbreviated YPAD. 1x YPAD contains 1% (w/v) Bacto yeast extract, 2% (w/v) Bacto peptone. 2% (w/v) Glucose, and adenine hemisulfate 80 mg/l. For 1l of media, this corresponds to 10g yeast extract, 20g peptone, 20g Glucose, and 80mg adenine. #### Synthetic Dropout Media I am using Yeast Nitrogen Base and Complete Supplement Mixtures (CSM) from <a href="https://formedium.com/complete-supplement-mixture-csm-drop-outs/">Formedium</a>. The recipe for the YNB is as follows:</p>
+<p>Formedium Yeast Nitrogen Base</p>
+<div class="table-container" style="width: 50%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Formula</th>
+<th>mg/L</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Biotin</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Ca-Panthotenate</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td>Folic acid</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<td>Inositol</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>Nicotinic Acid (Niacin)</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>p-Aminobenzoic Acid</td>
+<td>0.2</td>
+</tr>
+<tr class="odd">
+<td>Pyridoxine HCl</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>Riboflavin</td>
+<td>0.2</td>
+</tr>
+<tr class="odd">
+<td>Thiamine HCl</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>Boric Acid</td>
+<td>0.5</td>
+</tr>
+<tr class="odd">
+<td>Copper Sulfate</td>
+<td>0.04</td>
+</tr>
+<tr class="even">
+<td>Potassium Iodide</td>
+<td>0.1</td>
+</tr>
+<tr class="odd">
+<td>Ferric Chloride</td>
+<td>0.2</td>
+</tr>
+<tr class="even">
+<td>Manganese Sulfate</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td>Sodium Molybdate</td>
+<td>0.2</td>
+</tr>
+<tr class="even">
+<td>Zinc Sulfate</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td>Potassium Phosphate, monobasic</td>
+<td>1000</td>
+</tr>
+<tr class="even">
+<td>Magnesium Sulphate, anhydrous</td>
+<td>500</td>
+</tr>
+<tr class="odd">
+<td>Sodium Chloride</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>Calcium Chloride, anhydrous</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>Ammonium Sulphate</td>
+<td>5000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Suspend <strong>6.9 g</strong> powdered medium in <strong>1 L</strong> distilled water.<br>
+Store dry at room temperature.</p>
+<p>The recipe per liter for the YNB from Sigma calls for 6.7g/l and in their work, Braun et al.&nbsp;used 1.7g/l for their plates and liquid media. Thus, we should use (1/7/6.7)*6.9=1.75g/l in our recreated recipe. Braun et al added 5g/l Ammonium Sulfate which corresponds to our YNB.</p>
+<p>For the Complete supplement mixtures, Braun et al.&nbsp;used Sigma <a href="https://www.sigmaaldrich.com/GB/en/product/sigma/y2001">Synthetic dropout medium supplements Y2001</a> with all standard amino acids except for histidine, leucine, tryptophan and uracil. Each amino acid is present at a concentration of 76 mg/L. Other nutrients: Adenine (18 mg/L), inositol (76 mg/L), p-aminobenzoic acid (8 mg/L) and to which they added 0.006 g/liter L-tryptophan, and 0.003 g/liter uracil. Braun et al used the full 1.4g/l called for.</p>
+<div class="table-container" style="width: 50%; margin: auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Formula</th>
+<th>mg/L</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Adenine</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>L-Arginine</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>L-Aspartic acid</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td>L-Histidine HCl</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>L-Isoleucine</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Leucine</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>L-Lysine HCl</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Methionine</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>L-Phenylalanine</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Threonine</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>L-Tryptophan</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>L-Tyrosine</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>Uracil</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Valine</td>
+<td>140</td>
+</tr>
+<tr class="odd">
+<td><strong>TOTAL</strong></td>
+<td><strong>790</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 <section id="yeast-plating" class="level3">
 <h3 class="anchored" data-anchor-id="yeast-plating">Yeast Plating</h3>

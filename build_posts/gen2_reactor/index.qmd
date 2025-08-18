@@ -1,6 +1,10 @@
 ---
 title: "Second Generation Bioreactor Build Note"
-author: ["David Jordan", "Somsubhro Bagchi"]
+author: 
+ - name: David Jordan
+   url: mailto:public@livingphysics.org
+ - name: Somsubhro Bagchi
+   url: mailto:som@livingphysics.org
 code-fold: true
 date: "2025-05-23"
 categories: [Builds, Bioreactor]

@@ -133,7 +133,7 @@ Formedium Yeast Nitrogen Base
 Suspend **6.9 g** powdered medium in **1 L** distilled water.  
 Store dry at room temperature.
 
-The recipe per liter for the YNB from Sigma calls for 6.7g/l and in their work, Braun et al. used 1.7g/l for their plates and liquid media.  Thus, we should use (1/7/6.7)*6.9=1.75g/l in our recreated recipe.  Braun et al added 5g/l Ammonium Sulfate which corresponds to our YNB.
+The recipe per liter for the YNB from Sigma calls for 6.7g/l and in their work, Braun et al. used 1.7g/l for their plates and liquid media.  Thus, we should use (1.7/6.7)*6.9=1.75g/l in our recreated recipe.  Braun et al added 5g/l Ammonium Sulfate which corresponds to our YNB.
 
 For the Complete supplement mixtures, Braun et al. used Sigma [Synthetic dropout medium supplements Y2001](https://www.sigmaaldrich.com/GB/en/product/sigma/y2001) with all standard amino acids except for histidine, leucine, tryptophan and uracil. Each amino acid is present at a concentration of 76 mg/L. Other nutrients: Adenine (18 mg/L), inositol (76 mg/L), p-aminobenzoic acid (8 mg/L) and to which they added 0.006 g/liter L-tryptophan, and 0.003 g/liter uracil. Braun et al used the full 1.4g/l called for.
 

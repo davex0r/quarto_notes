@@ -179,7 +179,11 @@
 <h3 class="anchored" data-anchor-id="yeast-liquid-culture">Yeast Liquid Culture</h3>
 <section id="ypad" class="level4">
 <h4 class="anchored" data-anchor-id="ypad">YPAD</h4>
-<p>Yeast are easily grown in complex liquid media containing Yeast Extract, Peptone, Adenine, and Dextrose (D-Glucose), commonly abbreviated YPAD. 1x YPAD contains 1% (w/v) Bacto yeast extract, 2% (w/v) Bacto peptone. 2% (w/v) Glucose, and adenine hemisulfate 80 mg/l. For 1l of media, this corresponds to 10g yeast extract, 20g peptone, 20g Glucose, and 80mg adenine. #### Synthetic Dropout Media I am using Yeast Nitrogen Base and Complete Supplement Mixtures (CSM) from <a href="https://formedium.com/complete-supplement-mixture-csm-drop-outs/">Formedium</a>. The recipe for the YNB is as follows:</p>
+<p>Yeast are easily grown in complex liquid media containing Yeast Extract, Peptone, Adenine, and Dextrose (D-Glucose), commonly abbreviated YPAD. 1x YPAD contains 1% (w/v) Bacto yeast extract, 2% (w/v) Bacto peptone. 2% (w/v) Glucose, and adenine hemisulfate 80 mg/l. For 1l of media, this corresponds to 10g yeast extract, 20g peptone, 20g Glucose, and 80mg adenine.</p>
+</section>
+<section id="synthetic-dropout-media" class="level4">
+<h4 class="anchored" data-anchor-id="synthetic-dropout-media">Synthetic Dropout Media</h4>
+<p>I am using Yeast Nitrogen Base and Complete Supplement Mixtures (CSM) from <a href="https://formedium.com/complete-supplement-mixture-csm-drop-outs/">Formedium</a>. The recipe for the YNB is as follows:</p>
 <p>Formedium Yeast Nitrogen Base</p>
 <div class="table-container" style="width: 50%; margin: auto;">
 <table class="caption-top table">

@@ -97,6 +97,7 @@ Restriction sites can be introduced into PCR amplified inserts by designing prim
 ### Yeast Liquid Culture
 #### YPAD 
 Yeast are easily grown in complex liquid media containing Yeast Extract, Peptone, Adenine, and Dextrose (D-Glucose), commonly abbreviated YPAD.  1x YPAD contains 1% (w/v) Bacto yeast extract, 2% (w/v) Bacto peptone. 2% (w/v) Glucose, and adenine hemisulfate 80 mg/l.  For 1l of media, this corresponds to 10g yeast extract, 20g peptone, 20g Glucose, and 80mg adenine.
+
 #### Synthetic Dropout Media
 I am using Yeast Nitrogen Base and Complete Supplement Mixtures (CSM) from [Formedium](https://formedium.com/complete-supplement-mixture-csm-drop-outs/).  The recipe for the YNB is as follows:
 

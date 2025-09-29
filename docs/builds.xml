@@ -10,7 +10,249 @@
 <atom:link href="https://notes.livingphysics.org/builds.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from the living physics Lab</description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Fri, 28 Feb 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 08 Sep 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Second Generation Bioreactor Build Note</title>
+  <dc:creator>David Jordan</dc:creator>
+  <dc:creator>Somsubhro Bagchi</dc:creator>
+  <link>https://notes.livingphysics.org/build_posts/gen2_reactor/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>This note outlines the build of our second generation bioreactor. This version of the bioreactor includes Temperature Control and a Pump System for exchanging media. It can be run as a batch reaction with the pumps tuned off, or as a Turbidostat or a Chemostat. This is not a sealed system as in <a href="../../build_posts/gen1_reactor_build/index.html">Bioreactor_v1</a> so there are no pressure measurements for this system.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The second generation bioreactor was designed to enable continuous culturing of microbes. Continuous culture refers to growth with very frequent small dilutions and removal of old media and cells. This is in contrast to “batch culture” where a liquid broth is grown from a small number of cells to a high density, and then diluted all at once, usually by transferring a small volume of the dense culture to another large volume of fresh media. There are different ways in which continuous cultures are realized. The main challenge is setting the dilution rate such that the culture is always growing exponentially, without getting diluted to extinction or growing too dense for the measurement device. This is can be done in a variety of ways, but two common methods are chemostat operation and turbidostat operation. Conceptually, the turbidostat is easiest to understand. In this mode, there is direct feedback from a cultures optical density to the dilution. One simple tragedy is to activate dilution when the OD is above a set-point until OD is brought to the set-point. Another strategy is to adjust the dilution rate in proportion to the difference from the setpoint with a feedback controller, such as a proportional integral differential (PID) controller. Another method we have implemented is based on state space prediction using a Kalman filter, which dilutes below the set point and allows the culture to regrow up to the setpoint in order to provide more accurate estimates of the growth rate<span class="citation" data-cites="Hoffmann2017-po">&nbsp;[1]</span>. The chemostat was originally introduced b Novick and Szilard in 1950<span class="citation" data-cites="Novick1950-fv">&nbsp;[2]</span>. A chemostat uses a liquid medium that has a single limiting nutrient that controls te growth rate, which is then set by the dilution rate <img src="https://latex.codecogs.com/png.latex?D"> where the doubling time <img src="https://latex.codecogs.com/png.latex?t_d"> is given by <img src="https://latex.codecogs.com/png.latex?%20%5Clarge%20t_d%20=%20%5Cfrac%7Bln%202%7D%7BD%7D"><br>
+The chemostat is designed so that the parameters of the culture (like growth rate, optical density, cell number, pH, etc) remain constant.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen2_reactor/images/Bioreactor_v2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Bioreactor v2</figcaption>
+</figure>
+</div>
+</section>
+<section id="design-and-construction" class="level1">
+<h1>Design and Construction</h1>
+<section id="temp_system" class="level2">
+<h2 class="anchored" data-anchor-id="temp_system">Temperature System</h2>
+<p>The temperature control system is based on a PC water-cooling system. In short, heated or cooled water is pumped around a closed loop which includes a sleeve that bathes the bottom of the vial. The pump is a <a href="https://www.amazon.co.uk/Cooling-3000RPM-Integrated-Support-Intelligent-default/dp/B08CZW82T6">PC liquid cooling pump</a>. This pumps water into an <a href="https://www.amazon.co.uk/dp/B09B36Q5T3">aluminum heat exchanger</a> which has been attached to a <a href="https://www.amazon.co.uk/dp/B08FBRY2BN">Peltier effect element</a> with <a href="https://www.amazon.co.uk/dp/B0BN3R5717">thermally conductive double stick tape</a>. The opposite side of peltier element is attached to a <a href="https://uk.rs-online.com/web/p/heatsinks/0158556">heat-sink and fan assembly</a>. There are 2 <a href="https://www.amazon.co.uk/dp/B08GJ72CC3">inline thermistors</a> to measure the water temperature just after the and at the end of the loop jut before the pump. The vials are sheathed in <a href="https://www.amazon.co.uk/dp/B07MG4FKLB">motor water cooling jackets</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen2_reactor/images/cooling_jacket.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Motor cooling jacket repurposed as vial water bath</figcaption>
+</figure>
+</div>
+<p>Originally this was designed to distribute the flow in parallel, but pressure differential issues resulted in uneven flows tot eh four reactors, so instead they are run in series. This means that heat loss results in a gradient of temperatures from vial A (nearest to outflow) to vial D (farthest from outflow), but ths gradient is measured and recorded. The current provided to the Peltier element is controlled by a <a href="https://uk.robotshop.com/products/cytron-20a-6-30v-single-dc-motor-controller">Cytron MD20A</a> motor controller via a PWM signal from the Raspberry Pi. The current passing through the peltier element is recorded by an <a href="https://thepihut.com/products/adafruit-ina219-high-side-dc-current-sensor-breakout-26v-3-2a-max">INA219</a> chip via I2C with Qwiic connectors. The inline flow temperatures are converted to voltages using a simple 10kOhm voltage divider circuit an read into the Pi via one of the free ADC ports on one of the 2 <a href="https://thepihut.com/products/adafruit-ads7830-8-channel-8-bit-adc-with-i2c-stemma-qt-qwiic">ADS7830</a> analog to digital converters.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen2_reactor/images/Bioreactor_v2_2025-Sep-12_01-46-52PM-000_CustomizedView28749035375.png" class="img-fluid figure-img"></p>
+<figcaption>Schematic of the PC Water-cooling based temperature controller</figcaption>
+</figure>
+</div>
+</section>
+<section id="pumps" class="level2">
+<h2 class="anchored" data-anchor-id="pumps">Pump System</h2>
+<p>The pump system consists of 8 <a href="https://www.amazon.co.uk/dp/B07RWNZDCR">stepper motor controlled peristaltic pumps</a>, a fresh media feed pump and a waste removal pump for each of the 4 bioreactor vials. The pumps are powered by a dedicated <a href="https://www.amazon.co.uk/dp/B0CGR54L81">6A power supply</a> and connected through a <a href="https://thepihut.com/products/10-port-usb-hub-5v-4a">USB hub</a> to <a href="https://www.pololu.com/product/3130">Pololu Tic</a> stepper motor controllers. The pumps are connected by luer lock adapters to stainless steel syringe needles in custom <a href="https://labcrafter.co.uk/products/40ml-glass-vial-cap-s-with-ports-and-stir-bar">3D printed caps</a>. Pumps are connected to media feed bottle using these <a href="https://pioreactor.com/collections/accessories-and-parts/products/gl45-cap-with-luer-lock-connectors?variant=46788561403960">custom printed lids</a> with the 14 inch tubing option.</p>
+</section>
+<section id="od_system" class="level2">
+<h2 class="anchored" data-anchor-id="od_system">Optical Density System</h2>
+<p>We used the design from 3D printed LED holder we developed for the <a href="../../build_posts/gen1_reactor_update_01/index.html">updated Bioreactor v1</a>, as well as the same <a href="../../build_posts/gen1_reactor_update_01/index.html#amplifier">transimpedance amplifier circuit</a>. This comprises 12 voltage measurements that are read into 12/16 ports of a pair of ADS7830 ADCs. The 3D printed LED holder sleeve is shown in black in the schematic diagram.</p>
+</section>
+<section id="stirring-and-illumination" class="level2">
+<h2 class="anchored" data-anchor-id="stirring-and-illumination">Stirring and Illumination</h2>
+<p>The stirring and illumination system is also copied form our <a href="../../build_posts/gen1_reactor_build/index.html">v1 Bioreactor design</a>, using PC fans with attached magnets and 8 element Neopixel ring lights for programmable RGB illumination from below.</p>
+</section>
+</section>
+<section id="control_software" class="level1">
+<h1>Control and Software</h1>
+<section id="chemostat_mode" class="level2">
+<h2 class="anchored" data-anchor-id="chemostat_mode">Chemostat Mode</h2>
+<p>Chemostat operation relies on matched inflow and outflow to ensure that the culture volume does not drift overtime. Despite extensive calibration efforts, the pump tolerances were not sufficient to maintain volumes over the extended run times.</p>
+</section>
+<section id="turbidostat_mode" class="level2">
+<h2 class="anchored" data-anchor-id="turbidostat_mode">Turbidostat Mode</h2>
+<p>We implemented a turbidostat mode based on the Extended Kalman filter design of Holffmann and colleagues<span class="citation" data-cites="Hoffmann2017-po">&nbsp;[1]</span>. Thius works by online estimation of a hidden state space of the culture which contains both estimates of its current OD and its growth rate. * <strong>State variables</strong>: The EKF tracks two hidden states:</p>
+<ol type="1">
+<li><strong>Optical density (OD)</strong> of the culture.</li>
+<li><strong>Growth rate (r)</strong>, expressed as a geometric growth factor per time step.</li>
+</ol>
+<ul>
+<li><p><strong>Dynamic model</strong>: They assume discrete exponential growth between measurements: [ OD_{k+1} = OD_k r_k] and [ r_{k+1} = r_k,] meaning OD changes multiplicatively with growth, while the growth rate is treated as constant between steps but can be updated when new information arrives.</p></li>
+<li><p><strong>Recursive estimation</strong>: At every second, the EKF predicts the next OD and growth rate, then updates those predictions using the noisy optical density measurement. The Kalman gain balances trust between the model prediction and new data, depending on their variances.</p></li>
+<li><p><strong>Dilution events</strong>: Since pump events cause sudden drops in OD, the filter assigns a <strong>high uncertainty to OD estimates</strong> during and immediately after dilution. This lets the OD quickly reconverge to the true density, while the growth rate estimate remains stable because its covariance is not reset. As a result, growth rate estimates survive dilution disturbances and retain continuity.</p></li>
+</ul>
+<p>The code assciated with the implemenation of this mode can be found in the turbidostat_od_controller method and ExtendedKalmanFilter object method in src/utils in <a href="https://github.com/livingphysics/Bioreactor_v2/blob/main/src/utils.py">Bioreactor_v2</a>.</p>
+</section>
+</section>
+<section id="calibration" class="level1">
+<h1>Calibration and Testing</h1>
+<section id="temperature-control" class="level2">
+<h2 class="anchored" data-anchor-id="temperature-control">Temperature Control</h2>
+<p>Tempoerature control data can be pulled directly from the GitHub repository and plotted in-line with Quarto and Python. Here we show the temperature difference</p>
+<div id="8a2e9e0d" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># If file is local (after downloading from GitHub)</span></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># df = pd.read_csv("20250901_131355_bioreactor_data.csv")</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Or load directly from GitHub raw link (requires internet access)</span></span>
+<span id="cb1-8">url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/livingphysics/Bioreactor_v2/refs/heads/main/bioreactor_data/20250901_131355_bioreactor_data.csv"</span>)</span>
+<span id="cb1-9">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(url)</span>
+<span id="cb1-10">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df.iloc[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span>:]</span>
+<span id="cb1-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compute difference</span></span>
+<span id="cb1-12">df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'temp_diff'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'vial_D_temp'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">27</span></span>
+<span id="cb1-13">data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'vial_D_temp'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">27</span></span>
+<span id="cb1-14">data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data.dropna()</span>
+<span id="cb1-15">std_dev <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data.std()</span>
+<span id="cb1-16"></span>
+<span id="cb1-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot histogram</span></span>
+<span id="cb1-18">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span>
+<span id="cb1-19">plt.hist(df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'temp_diff'</span>].dropna(), bins<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, density<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, edgecolor<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'black'</span>)</span>
+<span id="cb1-20">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'vial_D_temp − set_point(27) (°C)'</span>)</span>
+<span id="cb1-21">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Probability Density'</span>)</span>
+<span id="cb1-22">plt.title(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'Histogram of Temperature Deviation</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Std Dev = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>std_dev<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.3f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> °C'</span>)</span>
+<span id="cb1-23">plt.grid(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'--'</span>, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb1-24">plt.show()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://notes.livingphysics.org/build_posts/gen2_reactor/index_files/figure-html/cell-2-output-1.png" width="651" height="467" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="pump_calibration" class="level2">
+<h2 class="anchored" data-anchor-id="pump_calibration">Pump Calibration</h2>
+<p>Pump calibration was carried out by measuring flow rates using an RS232 connected digital scale from <a href="https://uk.rs-online.com/web/p/weighing-scales/2753858?gb=s">Kern</a> with a 0.001g resolution. Data was read using the pyserial function in Python. Calibration is done by running each pump at a defined step rate for a fixed time, weighing the water before and after with the connected scale, and converting the change in mass (grams) to volume. The software repeats this several times, records the step rate, run duration, and measured flow rate (ml/s) into a CSV file, and then uses linear regression and plotting utilities to build a calibration curve that maps step rates to actual flow rates for each pump and direction.</p>
+</section>
+<section id="temp_calibration" class="level2">
+
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Temperature Controller</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0">
+<div id="ref-Hoffmann2017-po" class="csl-entry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">S. A. Hoffmann, C. Wohltat, K. M. Müller, and K. M. Arndt, <em>A User-Friendly, Low-Cost Turbidostat with Versatile Growth Rate Estimation Based on an Extended Kalman Filter</em>, PLoS One <strong>12</strong>, e0181923 (2017).</div>
+</div>
+<div id="ref-Novick1950-fv" class="csl-entry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. Novick and L. Szilard, <em>Description of the Chemostat</em>, Science <strong>112</strong>, 715 (1950).</div>
+</div>
+</div></section></div> ]]></description>
+  <category>Builds</category>
+  <category>Bioreactor</category>
+  <guid>https://notes.livingphysics.org/build_posts/gen2_reactor/</guid>
+  <pubDate>Mon, 08 Sep 2025 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Recreating the Gal-His yeast system used to demonstrate adaptive reprogramming</title>
   <dc:creator>David Jordan</dc:creator>
@@ -476,8 +718,8 @@ Store dry at room temperature.</p>
 <h2 class="anchored" data-anchor-id="d-printed-led-and-photodiode-sleeve">3D Printed LED and Photodiode Sleeve</h2>
 <p>One of the major issues with the initial design is that black acrylic sheet is transparent to infrared. As such, each sheet transmitted and internally reflected much of the output of the infrared LED, leading to different baseline readings for the interior vs exterior reactors in a 4 reactor line. In addition, the previous design allowed some rotation of the diodes and LED which resulted in inconsistencies. The 3D printed <a href="https://www.printables.com/model/715199-pioreactor-20ml-v10-printable-parts">Pioreactor v1.0 vial holder</a> solves this problem but was too high for our system, so I trimmed it in Autodesk Fusion to retain a truncated version <a href="./files/trunc_vial_holder.stl">(.stl file)</a>. First, load the model and then click on the <em>Mesh</em> tab. Create an <em>Offset Plane</em> and position it were you want to cut the model (I cut i just above and just below the diode l ayer). Finally, use the <em>Plane Cut</em> command in the modify section and choose the <strong>fill</strong> option.</p>
 </section>
-<section id="transimpedance-amplifier-circuit" class="level2">
-<h2 class="anchored" data-anchor-id="transimpedance-amplifier-circuit">Transimpedance Amplifier Circuit</h2>
+<section id="amplifier" class="level2">
+<h2 class="anchored" data-anchor-id="amplifier">Transimpedance Amplifier Circuit</h2>
 <p>I have designed and implemented a new current amplifier based on the OP380 Transimpedance amplifier to amplify the photodiode current used to measure the cultures optical density. We have chosen different gains for each set of photodiodes. The highest gain is achieved with <img src="https://latex.codecogs.com/png.latex?100M%5COmega"> resistors for the IR reference PDs, the <img src="https://latex.codecogs.com/png.latex?135%5E%7B%5Ccirc%7D"> PDs use a <img src="https://latex.codecogs.com/png.latex?10M%5COmega"> resistor and the <img src="https://latex.codecogs.com/png.latex?180%5E%7B%5Ccirc%7D"> PDs use a <img src="https://latex.codecogs.com/png.latex?360k%5COmega"> resistor. The circuit for the transimpedance amplifier is based on the simple amplifier circuit provided in the <a href="https://www.ti.com/lit/ds/symlink/opa380.pdf">OP380 documentation</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

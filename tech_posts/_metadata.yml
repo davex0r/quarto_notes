@@ -2,11 +2,11 @@
 
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
-freeze: true
+freeze: false
 
 # Enable banner style title blocks
 title-block-banner: true
 
 html:
     theme: darkly
-    css: styles.css
+    css: ../styles.css

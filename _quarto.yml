@@ -1,10 +1,12 @@
 project:
   type: website
   output-dir: docs
-  render:
-    - "*.qmd"
-    - "!quarto_env/"  # Ignores the quarto_env directory
-
+  preview:
+    port: 4200
+    browser: false
+    watch-inputs: false  # Add this
+    navigate: false      # Add this
+    
 website:
   title: "Notebooks"
   site-url: "https://notes.livingphysics.org"
@@ -26,11 +28,13 @@ website:
 format:
   html:
     theme: darkly
-    css: styles.css
+    css: ./styles.css
     toc: true
 feed:
   type: rss
   image-height: 60
   image-width: 60
 execute:
-  freeze: auto
+  freeze: false
+editor:
+  render-on-save: true

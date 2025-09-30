@@ -71,9 +71,13 @@ The chemostat is designed so that the parameters of the culture (like growth rat
 </section>
 <section id="control_software" class="level1">
 <h1>Control and Software</h1>
+<section id="codebase" class="level2">
+<h2 class="anchored" data-anchor-id="codebase">Codebase</h2>
+<p>The full BioreactorV2 codebase can e found in <a href="https://github.com/livingphysics/Bioreactor_v2">here</a>. Data from experiments is written into the bioreactor_data directory and pushed as commits. The code creates a <code>Bioreactor</code> class to manage all sensors and operations for the bioreactor. The class initializes the ADCs, the infrared LEDs, the stirrers, the ring lights, the temperature sensors, the peltier controller, the peltier current monitor, the pumps and a set of relays on startup. A new datafile is initialized with the current date and time and stored int he bioreactor_data directory. Threading is used to start separate jobs that may have different update cycles, for example, the PID temperature control might update every second, while the sensor measurements may update every 5 seconds, and the pumps every 60 seconds. This is controlled by creating and starting jobs, see <a href="https://github.com/livingphysics/Bioreactor_v2/blob/main/example_scripts/new_chemostat.py">new_chemostat</a> for an example.</p>
+</section>
 <section id="chemostat_mode" class="level2">
 <h2 class="anchored" data-anchor-id="chemostat_mode">Chemostat Mode</h2>
-<p>Chemostat operation relies on matched inflow and outflow to ensure that the culture volume does not drift overtime. Despite extensive calibration efforts, the pump tolerances were not sufficient to maintain volumes over the extended run times.</p>
+<p>Chemostat operation relies on matched inflow and outflow to ensure that the culture volume does not drift overtime. Despite extensive calibration efforts, the pump tolerances were not sufficient to maintain volumes over the extended run times. In order to overcome this, outflow ports were placed at a fixed height so that liquid levels could not fall below this line. In addition, outflow was set to 1.1x the inflow rate. In the codebase, the <code>compensate_flow</code> method carries out this program. The <code>balanced_flow</code> method is retained in the case that a more accurate pump system is designed in future. Another option would be to included a serially connected scale for each bioreactor and feedback the flow levels on the actual vial mass.</p>
 </section>
 <section id="turbidostat_mode" class="level2">
 <h2 class="anchored" data-anchor-id="turbidostat_mode">Turbidostat Mode</h2>
@@ -95,7 +99,7 @@ The chemostat is designed so that the parameters of the culture (like growth rat
 <section id="temperature-control" class="level2">
 <h2 class="anchored" data-anchor-id="temperature-control">Temperature Control</h2>
 <p>Tempoerature control data can be pulled directly from the GitHub repository and plotted in-line with Quarto and Python. Here we show the temperature difference</p>
-<div id="8a2e9e0d" class="cell" data-execution_count="1">
+<div id="743fe7cd" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;

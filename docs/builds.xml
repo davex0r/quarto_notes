@@ -12,7 +12,7 @@
 <generator>quarto-1.6.39</generator>
 <lastBuildDate>Mon, 08 Sep 2025 23:00:00 GMT</lastBuildDate>
 <item>
-  <title>Second Generation Bioreactor Build Note</title>
+  <title>Second Generation Bioreactor Build</title>
   <dc:creator>David Jordan</dc:creator>
   <dc:creator>Somsubhro Bagchi</dc:creator>
   <link>https://notes.livingphysics.org/build_posts/gen2_reactor/</link>
@@ -98,8 +98,8 @@ The chemostat is designed so that the parameters of the culture (like growth rat
 <h1>Calibration and Testing</h1>
 <section id="temperature-control" class="level2">
 <h2 class="anchored" data-anchor-id="temperature-control">Temperature Control</h2>
-<p>Tempoerature control data can be pulled directly from the GitHub repository and plotted in-line with Quarto and Python. Here we show the temperature difference</p>
-<div id="743fe7cd" class="cell" data-execution_count="1">
+<p>Temperature control data can be pulled directly from the GitHub repository and plotted in-line with Quarto and Python. Here we show the temperature difference</p>
+<div id="b323442c" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;

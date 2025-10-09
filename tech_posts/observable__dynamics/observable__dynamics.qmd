@@ -1,7 +1,6 @@
 ---
 title: "Observable functions and their dynamics"
 code-fold: true
-jupyter: julia-1.11
 author: "David Jordan"
 date: "2024-06-24"
 categories: ["Observable Functions", "Projection Operators"]

@@ -43,9 +43,9 @@ w^* &= G^{-1} \left [ \begin{matrix} \langle sin(x),1\rangle \\  \langle sin(x),
 Which gives the following results:
 
 ```{julia}
-#| label: non-linear fit
+#| label: nonlinear-fit
 #| fig-cap: "Polynomial fits using either Taylor series approximation or the optimal projection"
-#| output: asis
+
 using Plots
 using QuadGK
 
@@ -84,8 +84,6 @@ coeffs = inv(V)*integrals
 plot!(p,t1,coeffs[1].+coeffs[2].*t1.+coeffs[3].*t1.^2,marker=(:circle, 5),label="Projection Operator")
 
 plot!(p, xlim=(0.0, 1.1))
-
-display(p)
 ```
 
  Now let us look at the the general Gram matrix in this case, we obtain the Hilbert matrix.  The fact that this matrix is ill conditioned means that the inverse greatly magnifies small differences in the input. 

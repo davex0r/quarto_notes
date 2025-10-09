@@ -1,7 +1,6 @@
 ---
 title: "Projections and Basis Functions with Chemistry"
 code-fold: true
-jupyter: julia-1.11
 author: 
  - name: David Jordan
    url: mailto:public@livingphysics.org

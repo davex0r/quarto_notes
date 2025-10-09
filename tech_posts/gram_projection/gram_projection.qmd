@@ -1,7 +1,6 @@
 ---
 title: "Projection in terms of the Gram Matrix"
 code-fold: true
-jupyter: julia-1.11
 author: "David Jordan"
 date: "2024-05-13"
 categories: ["Gram Matrix", "Projection Operators"]

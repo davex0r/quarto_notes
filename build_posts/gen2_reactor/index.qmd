@@ -1,5 +1,5 @@
 ---
-title: "Second Generation Bioreactor Build Note"
+title: "Second Generation Bioreactor Build"
 author: 
  - name: David Jordan
    url: mailto:public@livingphysics.org
@@ -81,7 +81,7 @@ The code assciated with the implemenation of this mode can be found in the turbi
 
 ## Temperature Control
 
-Tempoerature control data can be pulled directly from the GitHub repository and plotted in-line with Quarto and Python.  Here we show the temperature difference 
+Temperature control data can be pulled directly from the GitHub repository and plotted in-line with Quarto and Python.  Here we show the temperature difference 
 ```{python}
 import pandas as pd
 import matplotlib.pyplot as plt

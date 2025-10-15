@@ -4,3 +4,4 @@
 /.working_posts/
 notes/.DS_Store
 /quarto_env/
+**/*.quarto_ipynb
